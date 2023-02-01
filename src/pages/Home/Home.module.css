@@ -1,0 +1,20 @@
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  padding: 30px 0;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.items {
+  display: flex;
+  justify-content: left;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+
+/*# sourceMappingURL=Home.module.css.map */

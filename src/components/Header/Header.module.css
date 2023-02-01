@@ -1,0 +1,160 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700&display=swap"); /*Обнуление*/
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:focus, :active {
+  outline: none;
+}
+
+a:focus, a:active {
+  outline: none;
+}
+
+nav, footer, header, aside {
+  display: block;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input, button, textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a, a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*--------------------*/
+body {
+  font-family: "Exo 2", sans-serif;
+  background: linear-gradient(163deg, rgb(2, 175, 209) 0%, rgb(106, 85, 164) 100%) no-repeat fixed;
+}
+
+.header {
+  padding: 30px 0 15px 0;
+  box-shadow: 0px -5px 5px -5px rgba(2, 175, 209, 0.6) inset;
+}
+.header__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header__logo {
+  display: flex;
+}
+.header__img {
+  position: relative;
+  width: 70px;
+  height: 70px;
+}
+.header__img img {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+}
+.header__col {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 12px 0;
+}
+.header__title {
+  font-weight: 700;
+  font-size: 30px;
+}
+.header__subtitle {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 20px;
+}
+.basket {
+  display: flex;
+  align-items: center;
+  border: 3px solid rgb(2, 175, 209);
+  border-radius: 35px;
+  padding: 7px 30px;
+  position: relative;
+  transition-duration: 0.25s;
+}
+.basket__price {
+  color: black;
+  font-size: 16px;
+  padding-right: 10px;
+}
+.basket__row {
+  display: flex;
+  align-items: center;
+  gap: 0 5px;
+  border-left: black 1px solid;
+  padding-left: 10px;
+}
+.basket__img {
+  position: relative;
+  width: 30px;
+  height: 30px;
+}
+.basket__img img {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+}
+.basket__count {
+  color: black;
+  font-size: 16px;
+}
+.basket:hover {
+  box-shadow: 0 0 13px 5px rgba(2, 175, 209, 0.5);
+}
+
+/*# sourceMappingURL=Header.module.css.map */

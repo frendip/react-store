@@ -1,0 +1,123 @@
+[
+  {
+    "id": 0,
+    "image": "iphone14ProMax",
+    "title": "Iphone 14 Pro Max",
+    "memory": [
+      64,
+      128,
+      256
+    ],
+    "colours": [
+      "Фиолетовый",
+      "Розовый",
+      "Золотой"
+    ],
+    "price": 90000,
+    "category": 0,
+    "rating": 7
+  },
+  {
+    "id": 1,
+    "image": "iphone14Pro",
+    "title": "Iphone 14 Pro",
+    "memory": [
+      32,
+      64,
+      128
+    ],
+    "colours": [
+      "Фиолетовый",
+      "Синий",
+      "Розовый"
+    ],
+    "price": 70000,
+    "category": 0,
+    "rating": 6
+  },
+  {
+    "id": 2,
+    "image": "iphone14Plus",
+    "title": "Iphone 14 Plus",
+    "memory": [
+      64,
+      128,
+      256
+    ],
+    "colours": [
+      "Фиолетовый",
+      "Синий"
+    ],
+    "price": 68000,
+    "category": 0,
+    "rating": 5
+  },
+  {
+    "id": 3,
+    "image": "iphone14",
+    "title": "Iphone 14",
+    "memory": [
+      32,
+      64,
+      128
+    ],
+    "colours": [
+      "Фиолетовый",
+      "Синий"
+    ],
+    "price": 53000,
+    "category": 0,
+    "rating": 5
+  },
+  {
+    "id": 4,
+    "image": "iphone13ProMax",
+    "title": "Iphone 13 Pro Max",
+    "memory": [
+      64,
+      128,
+      256
+    ],
+    "colours": [
+      "Голубой",
+      "Розовый",
+      "Черный"
+    ],
+    "price": 71000,
+    "category": 0,
+    "rating": 7
+  },
+  {
+    "id": 5,
+    "image": "iphone13Pro",
+    "title": "Iphone 14 Pro",
+    "memory": [
+      16,
+      32,
+      64
+    ],
+    "colours": [
+      "Голубой",
+      "Черный"
+    ],
+    "price": 60000,
+    "category": 0,
+    "rating": 7
+  },
+  {
+    "id": 6,
+    "image": "iphoneSE",
+    "title": "Iphone SE (2020)",
+    "memory": [
+      32,
+      64
+    ],
+    "colours": [
+      "Черный",
+      "Белый"
+    ],
+    "price": 38000,
+    "category": 0,
+    "rating": 5
+  }
+]

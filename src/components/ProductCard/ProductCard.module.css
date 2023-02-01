@@ -1,0 +1,66 @@
+.productCard {
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+}
+.productCard__img {
+  align-self: center;
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+.productCard__img img {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+}
+.productCard__title {
+  text-align: center;
+  padding: 10px 0 15px 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+.productCard__selector {
+  display: flex;
+  flex-direction: column;
+  gap: 10px 0;
+  background: rgb(243, 243, 243);
+  border-radius: 15px;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+.productCard__selectorList {
+  display: flex;
+}
+.productCard__selectorItem {
+  flex: 1 1 100%;
+  text-align: center;
+  cursor: pointer;
+  padding: 10px 5px;
+  border-radius: 7px;
+  font-weight: 500;
+  transition: background-color 0.1s ease-in-out;
+}
+.productCard__selectorItem:hover {
+  background-color: #ececec;
+}
+.productCard__selectorItem:active {
+  background-color: #e7e7e7;
+}
+.productCard__selectorActive {
+  background: white;
+  box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2);
+}
+.productCard__button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.productCard__price {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/*# sourceMappingURL=ProductCard.module.css.map */

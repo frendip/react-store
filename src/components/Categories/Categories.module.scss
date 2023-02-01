@@ -1,0 +1,11 @@
+.categories {
+  &__list {
+    display: flex;
+    gap: 0 15px;
+  }
+
+  &__active {
+    border: 3px solid rgb(106, 85, 164);
+    font-weight: 700;
+  }
+}

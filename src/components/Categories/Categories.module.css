@@ -1,0 +1,10 @@
+.categories__list {
+  display: flex;
+  gap: 0 15px;
+}
+.categories__active {
+  border: 3px solid rgb(106, 85, 164);
+  font-weight: 700;
+}
+
+/*# sourceMappingURL=Categories.module.css.map */
