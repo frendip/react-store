@@ -2,31 +2,20 @@
   background: transparent;
   border-radius: 15px;
   font-size: 18px;
-}
-
-.categoriesBtn {
-  padding: 5px 15px;
-  border: 2px solid rgb(2, 175, 209);
   transition-duration: 0.2s;
-
-  &__active {
-    border: 3px solid rgb(106, 85, 164);
-    font-weight: 700;
-  }
 
   &:hover {
     background-color: darken(#f9f9f9, 5%);
   }
 
   &:active {
-    background-color: darken(#f9f9f9, 7%);
+    background-color: darken(#f9f9f9, 10%);
   }
 }
 
 .addProductBtn {
   padding: 3px 10px;
   border: 2px solid rgb(106, 85, 164);
-  transition-duration: 0.2s;
 
   &__count {
     display: inline-block;
@@ -51,38 +40,69 @@
   }
 
   &:active {
-    background-color: darken(#6a55a4ff, 7%);
+    background-color: darken(#6a55a4ff, 10%);
   }
 }
 
 .commonBtn {
-  transition-duration: 0.2s;
-
   &__primary {
-    border: 2px solid rgb(2, 175, 209);
+    border-style: solid;
+    border-color: rgb(2, 175, 209);
   }
 
   &__secondary {
-    border: 2px solid rgb(106, 85, 164);
+    border-style: solid;
+    border-color: rgb(106, 85, 164);
   }
 
-  &__small {
+  &__sizeSmall {
+    padding: 5px 15px;
+  }
+
+  &__sizeMedium {
     padding: 10px 30px;
   }
 
-  &__medium {
-    padding: 10px 60px;
+  &__sizeLarge {
+    padding: 15px 60px;
   }
 
-  &__large {
-    padding: 15px 100px;
+  &__borderThin {
+    border-width: 1px;
   }
 
-  &:hover {
-    background-color: darken(#f9f9f9, 5%);
+  &__borderMedium {
+    border-width: 2px;
   }
 
-  &:active {
-    background-color: darken(#f9f9f9, 7%);
+  &__borderThick {
+    border-width: 3px;
+  }
+
+  &__active {
+    border: 3px solid rgb(106, 85, 164);
+    font-weight: 700;
+  }
+}
+
+.cartItemBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  font-weight: 500;
+  border-radius: 50%;
+
+  &__counter {
+    font-size: 22px;
+    color: rgb(2, 175, 209);
+    border: 2px solid rgb(2, 175, 209);
+  }
+
+  &__delete {
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.6);
   }
 }

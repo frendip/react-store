@@ -89,11 +89,19 @@ body {
 }
 .header__logo {
   display: flex;
+  gap: 15px;
 }
 .header__img {
   position: relative;
-  width: 70px;
+  width: 40px;
   height: 70px;
+  border-radius: 10px;
+}
+.header__img:hover {
+  background-color: #ececec;
+}
+.header__img:active {
+  background-color: #e0e0e0;
 }
 .header__img img {
   width: 100%;
@@ -119,11 +127,7 @@ body {
 .basket {
   display: flex;
   align-items: center;
-  border: 3px solid rgb(2, 175, 209);
-  border-radius: 35px;
-  padding: 7px 30px;
   position: relative;
-  transition-duration: 0.25s;
 }
 .basket__price {
   color: black;
@@ -152,9 +156,6 @@ body {
 .basket__count {
   color: black;
   font-size: 16px;
-}
-.basket:hover {
-  box-shadow: 0 0 13px 5px rgba(2, 175, 209, 0.5);
 }
 
 /*# sourceMappingURL=Header.module.css.map */

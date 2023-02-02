@@ -1,21 +1,28 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import classes from './Categories.module.scss';
-import { CategoriesButton } from '../UI/button/Button';
+import { CommonButton } from '../UI/button/Button';
 
-const Categories: FC = () => {
-  const [activeCategory, setActiveCategory] = useState<number>(0);
-  const categories = ['Все', 'Iphone', 'IPad', 'IPod', 'Mac', 'AirPods'];
+interface CategoriesProps {
+  activeCategory: number;
+  setActiveCategory: React.ComponentState;
+}
+
+const Categories: FC<CategoriesProps> = ({ activeCategory, setActiveCategory }) => {
+  const categories = ['Все', 'Iphone', 'IPad', 'Mac', 'AirPods'];
 
   return (
     <div className={classes.categories}>
       <div className={classes.categories__list}>
         {categories.map((value, index) => (
-          <CategoriesButton
+          <CommonButton
             key={value}
             onClick={() => setActiveCategory(index)}
-            active={activeCategory === index && true}>
+            active={activeCategory === index && true}
+            variant={'primary'}
+            size={'small'}
+            borderWidth={'medium'}>
             {value}
-          </CategoriesButton>
+          </CommonButton>
         ))}
       </div>
     </div>

@@ -13,9 +13,9 @@
       "Розовый",
       "Золотой"
     ],
-    "price": 90000,
-    "category": 0,
-    "rating": 7
+    "price": 98990,
+    "category": 1,
+    "rating": 10
   },
   {
     "id": 1,
@@ -31,9 +31,9 @@
       "Синий",
       "Розовый"
     ],
-    "price": 70000,
-    "category": 0,
-    "rating": 6
+    "price": 91990,
+    "category": 1,
+    "rating": 7
   },
   {
     "id": 2,
@@ -48,8 +48,8 @@
       "Фиолетовый",
       "Синий"
     ],
-    "price": 68000,
-    "category": 0,
+    "price": 64990,
+    "category": 1,
     "rating": 5
   },
   {
@@ -65,9 +65,9 @@
       "Фиолетовый",
       "Синий"
     ],
-    "price": 53000,
-    "category": 0,
-    "rating": 5
+    "price": 59990,
+    "category": 1,
+    "rating": 6
   },
   {
     "id": 4,
@@ -83,9 +83,9 @@
       "Розовый",
       "Черный"
     ],
-    "price": 71000,
-    "category": 0,
-    "rating": 7
+    "price": 93990,
+    "category": 1,
+    "rating": 4
   },
   {
     "id": 5,
@@ -100,9 +100,9 @@
       "Голубой",
       "Черный"
     ],
-    "price": 60000,
-    "category": 0,
-    "rating": 7
+    "price": 87990,
+    "category": 1,
+    "rating": 6
   },
   {
     "id": 6,
@@ -116,8 +116,95 @@
       "Черный",
       "Белый"
     ],
-    "price": 38000,
-    "category": 0,
+    "price": 26990,
+    "category": 1,
+    "rating": 4
+  },
+  {
+    "id": 7,
+    "image": "ipadPro12-9",
+    "title": "iPad Pro 12.9\"",
+    "memory": [
+      128,
+      256
+    ],
+    "colours": [
+      "Серый космос",
+      "Серебряный"
+    ],
+    "price": 87990,
+    "category": 2,
+    "rating": 6
+  },
+  {
+    "id": 8,
+    "image": "ipadPro11",
+    "title": "iPad Pro 11\"",
+    "memory": [
+      64,
+      128,
+      256
+    ],
+    "colours": [
+      "Серый космос",
+      "Серебряный"
+    ],
+    "price": 65990,
+    "category": 2,
+    "rating": 8
+  },
+  {
+    "id": 9,
+    "image": "ipad10-9",
+    "title": "iPad 10.9\"",
+    "memory": [
+      32,
+      64,
+      128
+    ],
+    "colours": [
+      "Желтый",
+      "Розовый",
+      "Синий"
+    ],
+    "price": 37990,
+    "category": 2,
+    "rating": 4
+  },
+  {
+    "id": 10,
+    "image": "airPods",
+    "title": "Air Pods",
+    "memory": [
+    ],
+    "colours": [
+    ],
+    "price": 8990,
+    "category": 4,
+    "rating": 3
+  },
+  {
+    "id": 11,
+    "image": "airPods2",
+    "title": "Air Pods 2",
+    "memory": [
+    ],
+    "colours": [
+    ],
+    "price": 13490,
+    "category": 4,
     "rating": 5
+  },
+  {
+    "id": 12,
+    "image": "airPodsPro",
+    "title": "Air Pods Pro",
+    "memory": [
+    ],
+    "colours": [
+    ],
+    "price": 18490,
+    "category": 4,
+    "rating": 9
   }
 ]

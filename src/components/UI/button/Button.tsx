@@ -12,37 +12,13 @@ export const BaseButton: FC<BaseButtonProps> = ({ children, className, ...props 
   );
 };
 
-interface CategoriesButtonProps extends BaseButtonProps {
-  active?: boolean;
-}
-
-export const CategoriesButton: FC<CategoriesButtonProps> = ({
-  children,
-  active = false,
-  ...props
-}) => {
-  return (
-    <BaseButton
-      {...props}
-      className={clsx(classes.categoriesBtn, active && classes.categoriesBtn__active)}>
-      {children}
-    </BaseButton>
-  );
-};
-
 interface AddProductButtonProps extends BaseButtonProps {
   active?: boolean;
 }
 
-export const AddProductButton: FC<AddProductButtonProps> = ({
-  children,
-  active = false,
-  ...props
-}) => {
+export const AddProductButton: FC<AddProductButtonProps> = ({ children, ...props }) => {
   return (
-    <BaseButton
-      {...props}
-      className={clsx(classes.addProductBtn, active && classes.addProductBtn__active)}>
+    <BaseButton {...props} className={classes.addProductBtn}>
       + Добавить{' '}
       {children !== 0 && <span className={classes.addProductBtn__count}>{children}</span>}
     </BaseButton>
@@ -50,8 +26,10 @@ export const AddProductButton: FC<AddProductButtonProps> = ({
 };
 
 interface CommonButtonProps extends BaseButtonProps {
+  active?: boolean;
   variant?: 'primary' | 'secondary';
   size?: 'small' | 'medium' | 'large';
+  borderWidth?: 'thin' | 'medium' | 'thick';
 }
 
 const variantStyle = {
@@ -60,21 +38,56 @@ const variantStyle = {
 };
 
 const sizeStyle = {
-  small: classes.commonBtn__small,
-  medium: classes.commonBtn__medium,
-  large: classes.commonBtn__large,
+  small: classes.commonBtn__sizeSmall,
+  medium: classes.commonBtn__sizeMedium,
+  large: classes.commonBtn__sizeLarge,
+};
+
+const borderWidthStyle = {
+  thin: classes.commonBtn__borderThin,
+  medium: classes.commonBtn__borderMedium,
+  thick: classes.commonBtn__borderThick,
 };
 
 export const CommonButton: FC<CommonButtonProps> = ({
   children,
+  active = false,
   size = 'small',
   variant = 'primary',
+  borderWidth = 'thin',
   ...props
 }) => {
   return (
     <BaseButton
-      className={clsx(classes.commonBtn, variantStyle[variant], sizeStyle[size])}
+      className={clsx(
+        classes.commonBtn,
+        active && classes.commonBtn__active,
+        variantStyle[variant],
+        sizeStyle[size],
+        borderWidthStyle[borderWidth],
+      )}
       {...props}>
+      {children}
+    </BaseButton>
+  );
+};
+
+interface CartItemButtonProps extends BaseButtonProps {
+  action?: 'counter' | 'delete';
+}
+
+const actionStyle = {
+  counter: classes.cartItemBtn__counter,
+  delete: classes.cartItemBtn__delete,
+};
+
+export const CartItemButton: FC<CartItemButtonProps> = ({
+  children,
+  action = 'counter',
+  ...props
+}) => {
+  return (
+    <BaseButton className={clsx(classes.cartItemBtn, actionStyle[action])} {...props}>
       {children}
     </BaseButton>
   );

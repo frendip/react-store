@@ -17,8 +17,12 @@ const NotFound = () => {
         К сожалению данная страница отсутствует в нашем интернет-магазине.
       </div>
       <div className={classes.button}>
-        <CommonButton onClick={() => navigate(-1)} variant={'secondary'} size={'small'}>
-          Назад
+        <CommonButton
+          onClick={() => navigate(-1)}
+          variant={'secondary'}
+          size={'medium'}
+          borderWidth={'medium'}>
+          Вернуться назад
         </CommonButton>
       </div>
     </>

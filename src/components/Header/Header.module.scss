@@ -12,12 +12,22 @@
 
   &__logo {
     display: flex;
+    gap: 15px;
   }
 
   &__img {
     position: relative;
-    width: 70px;
+    width: 40px;
     height: 70px;
+    border-radius: 10px;
+
+    &:hover {
+      background-color: darken(#f9f9f9, 5%);
+    }
+
+    &:active {
+      background-color: darken(#f9f9f9, 10%);
+    }
 
     img {
       width: 100%;
@@ -52,14 +62,7 @@
 .basket {
   display: flex;
   align-items: center;
-
-  border: 3px solid rgb(2, 175, 209);
-  border-radius: 35px;
-
-  padding: 7px 30px;
-
   position: relative;
-  transition-duration: 0.25s;
 
   &__price {
     color: black;
@@ -94,9 +97,5 @@
   &__count {
     color: black;
     font-size: 16px;
-  }
-
-  &:hover {
-    box-shadow: 0 0 13px 5px rgba(2, 175, 209, 0.5);
   }
 }

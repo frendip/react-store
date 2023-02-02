@@ -11,21 +11,24 @@ import classes from './Home.module.scss';
 const Home = () => {
   const [products, setProducts] = useState<IProduct[]>([]);
 
+  const [activeCategory, setActiveCategory] = useState<number>(0);
+  const [activeSort, setActiveSort] = useState<number>(0);
+
   const [fetchProducts, isLoading] = useFetching(async () => {
-    const response = await PostService.getProducts();
+    const response = await PostService.getProducts(activeCategory);
     setProducts(response);
   });
 
   useEffect(() => {
     fetchProducts().then();
     window.scrollTo(0, 0);
-  }, []);
+  }, [activeCategory]);
 
   return (
     <>
       <div className={classes.top}>
-        <Categories />
-        <Sort />
+        <Categories activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
+        <Sort activeSort={activeSort} setActiveSort={setActiveSort} />
       </div>
       <div className={classes.title}>Все товары</div>
       <div className={classes.items}>

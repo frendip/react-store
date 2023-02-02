@@ -2,28 +2,18 @@
   background: transparent;
   border-radius: 15px;
   font-size: 18px;
-}
-
-.categoriesBtn {
-  padding: 5px 15px;
-  border: 2px solid rgb(2, 175, 209);
   transition-duration: 0.2s;
 }
-.categoriesBtn__active {
-  border: 3px solid rgb(106, 85, 164);
-  font-weight: 700;
-}
-.categoriesBtn:hover {
+.baseBtn:hover {
   background-color: #ececec;
 }
-.categoriesBtn:active {
-  background-color: #e7e7e7;
+.baseBtn:active {
+  background-color: #e0e0e0;
 }
 
 .addProductBtn {
   padding: 3px 10px;
   border: 2px solid rgb(106, 85, 164);
-  transition-duration: 0.2s;
 }
 .addProductBtn__count {
   display: inline-block;
@@ -46,32 +36,58 @@
   font-weight: 700;
 }
 .addProductBtn:active {
-  background-color: #5b498c;
+  background-color: #544482;
 }
 
-.commonBtn {
-  transition-duration: 0.2s;
-}
 .commonBtn__primary {
-  border: 2px solid rgb(2, 175, 209);
+  border-style: solid;
+  border-color: rgb(2, 175, 209);
 }
 .commonBtn__secondary {
-  border: 2px solid rgb(106, 85, 164);
+  border-style: solid;
+  border-color: rgb(106, 85, 164);
 }
-.commonBtn__small {
+.commonBtn__sizeSmall {
+  padding: 5px 15px;
+}
+.commonBtn__sizeMedium {
   padding: 10px 30px;
 }
-.commonBtn__medium {
-  padding: 10px 60px;
+.commonBtn__sizeLarge {
+  padding: 15px 60px;
 }
-.commonBtn__large {
-  padding: 15px 100px;
+.commonBtn__borderThin {
+  border-width: 1px;
 }
-.commonBtn:hover {
-  background-color: #ececec;
+.commonBtn__borderMedium {
+  border-width: 2px;
 }
-.commonBtn:active {
-  background-color: #e7e7e7;
+.commonBtn__borderThick {
+  border-width: 3px;
+}
+.commonBtn__active {
+  border: 3px solid rgb(106, 85, 164);
+  font-weight: 700;
+}
+
+.cartItemBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  font-weight: 500;
+  border-radius: 50%;
+}
+.cartItemBtn__counter {
+  font-size: 22px;
+  color: rgb(2, 175, 209);
+  border: 2px solid rgb(2, 175, 209);
+}
+.cartItemBtn__delete {
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.6);
 }
 
 /*# sourceMappingURL=Button.module.css.map */

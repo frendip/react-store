@@ -2,9 +2,13 @@ import React, { FC, useState } from 'react';
 import classes from './Sort.module.scss';
 import clsx from 'clsx';
 
-const Sort: FC = () => {
+interface SortProps {
+  activeSort: number;
+  setActiveSort: React.ComponentState;
+}
+
+const Sort: FC<SortProps> = ({ activeSort, setActiveSort }) => {
   const [isOpenPopup, setIsOpenPopup] = useState<boolean>(false);
-  const [activeSort, setActiveSort] = useState<number>(0);
   const sortList = ['Популярности', 'Цене'];
 
   const onClickSort = (index: number) => {
