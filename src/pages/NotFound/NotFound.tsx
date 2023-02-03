@@ -2,7 +2,7 @@ import React from 'react';
 import icon404 from '../../assets/img/icon-404.png';
 import classes from './NotFound.module.scss';
 import { useNavigate } from 'react-router-dom';
-import { CommonButton } from '../../components/UI/button/Button';
+import { CommonButton } from '../../components/UI/Button/Button';
 
 const NotFound = () => {
   const navigate = useNavigate();

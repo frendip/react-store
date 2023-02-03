@@ -1,8 +1,8 @@
 import React, { FC, useState } from 'react';
 import classes from './ProductCard.module.scss';
-import { AddProductButton } from '../UI/button/Button';
-import { IProduct } from '../types/types';
+import { AddProductButton } from '../UI/Button/Button';
 import clsx from 'clsx';
+import { IProduct } from '../types/types';
 
 const ProductCard: FC<IProduct> = ({
   id,
@@ -24,8 +24,8 @@ const ProductCard: FC<IProduct> = ({
         <img src={require(`../../assets/img/${image}.png`)} alt="iphone14Pro" />
       </div>
       <div className={classes.productCard__title}>{title}</div>
-      {memory.length !== 0 && colours.length !== 0 && (
-        <div className={classes.productCard__selector}>
+      <div className={classes.productCard__selector}>
+        {memory.length !== 0 && (
           <ul className={classes.productCard__selectorList}>
             {memory.map((mem, index) => (
               <li
@@ -39,21 +39,21 @@ const ProductCard: FC<IProduct> = ({
               </li>
             ))}
           </ul>
-          <ul className={classes.productCard__selectorList}>
-            {colours.map((colour, index) => (
-              <li
-                key={colour}
-                onClick={() => setActiveColour(index)}
-                className={clsx(
-                  classes.productCard__selectorItem,
-                  activeColour === index && classes.productCard__selectorActive,
-                )}>
-                {colour}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+        )}
+        <ul className={classes.productCard__selectorList}>
+          {colours.map((colour, index) => (
+            <li
+              key={colour}
+              onClick={() => setActiveColour(index)}
+              className={clsx(
+                classes.productCard__selectorItem,
+                activeColour === index && classes.productCard__selectorActive,
+              )}>
+              {colour}
+            </li>
+          ))}
+        </ul>
+      </div>
       <div className={classes.productCard__button}>
         <div className={classes.productCard__price}>От {price} ₽</div>
         <AddProductButton onClick={() => setProductCount((count) => count + 1)}>

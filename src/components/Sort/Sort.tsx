@@ -1,17 +1,23 @@
 import React, { FC, useState } from 'react';
 import classes from './Sort.module.scss';
 import clsx from 'clsx';
+import { ISort } from '../types/types';
 
 interface SortProps {
-  activeSort: number;
+  activeSort: ISort;
   setActiveSort: React.ComponentState;
 }
 
 const Sort: FC<SortProps> = ({ activeSort, setActiveSort }) => {
   const [isOpenPopup, setIsOpenPopup] = useState<boolean>(false);
-  const sortList = ['Популярности', 'Цене'];
+  const sortList: ISort[] = [
+    { name: 'Популярности (по возрастанию)', sortProperty: 'rating', order: 'asc' },
+    { name: 'Популярности (по убыванию)', sortProperty: 'rating', order: 'desc' },
+    { name: 'Цене (по возрастанию)', sortProperty: 'price', order: 'asc' },
+    { name: 'Цене (по убыванию)', sortProperty: 'price', order: 'desc' },
+  ];
 
-  const onClickSort = (index: number) => {
+  const onClickSort = (index: ISort) => {
     setActiveSort(index);
     setIsOpenPopup(!isOpenPopup);
   };
@@ -19,17 +25,22 @@ const Sort: FC<SortProps> = ({ activeSort, setActiveSort }) => {
   return (
     <div className={classes.sort}>
       <div className={classes.sort__text} onClick={() => setIsOpenPopup(!isOpenPopup)}>
-        Сортировка по: <span>{sortList[activeSort]}</span>
+        Сортировка по: <span>{activeSort.name}</span>
       </div>
       {isOpenPopup && (
         <div className={classes.sort__popup}>
           <ul className={classes.sort__list}>
-            {sortList.map((sort, index) => (
+            {sortList.map((sort) => (
               <li
-                key={sort}
-                onClick={() => onClickSort(index)}
-                className={clsx(classes.sort__item, activeSort === index && classes.sort__active)}>
-                {sort}
+                key={sort.name}
+                onClick={() => onClickSort(sort)}
+                className={clsx(
+                  classes.sort__item,
+                  activeSort.sortProperty === sort.sortProperty &&
+                    activeSort.order === sort.order &&
+                    classes.sort__active,
+                )}>
+                {sort.name}
               </li>
             ))}
           </ul>

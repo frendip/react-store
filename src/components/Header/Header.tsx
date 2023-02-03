@@ -4,7 +4,7 @@ import classes from './Header.module.scss';
 import iphoneLogo from '../../assets/img/icon-iphone2.png';
 import basketLogo from '../../assets/img/icon-basket.png';
 import { Link } from 'react-router-dom';
-import { CommonButton } from '../UI/button/Button';
+import { CommonButton } from '../UI/Button/Button';
 
 const Header: FC = () => {
   return (

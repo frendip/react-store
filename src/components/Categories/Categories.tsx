@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import classes from './Categories.module.scss';
-import { CommonButton } from '../UI/button/Button';
+import { CommonButton } from '../UI/Button/Button';
 
 interface CategoriesProps {
   activeCategory: number;

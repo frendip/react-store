@@ -1,7 +1,7 @@
 import React from 'react';
 import iconCart from '../../assets/img/icon-cart.png';
 import iconTrash from '../../assets/img/icon-trash.png';
-import { BaseButton, CommonButton } from '../../components/UI/button/Button';
+import { BaseButton, CommonButton } from '../../components/UI/Button/Button';
 import { useNavigate } from 'react-router-dom';
 import CartItem from '../../components/CartItem/CartItem';
 import classes from './Cart.module.scss';

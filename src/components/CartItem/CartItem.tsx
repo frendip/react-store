@@ -2,7 +2,7 @@ import React from 'react';
 import productImg from '../../assets/img/iphone14ProMax.png';
 import classes from './CartItem.module.scss';
 import clsx from 'clsx';
-import { CartItemButton } from '../UI/button/Button';
+import { CartItemButton } from '../UI/Button/Button';
 
 const CartItem = () => {
   return (
