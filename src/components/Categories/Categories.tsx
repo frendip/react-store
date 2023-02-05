@@ -17,7 +17,7 @@ const Categories: FC<CategoriesProps> = ({ activeCategory, setActiveCategory }) 
           <CommonButton
             key={value}
             onClick={() => setActiveCategory(index)}
-            active={activeCategory === index && true}
+            active={activeCategory === index}
             variant={'primary'}
             size={'small'}
             borderWidth={'medium'}>
