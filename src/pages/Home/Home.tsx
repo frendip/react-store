@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Categories from '../../components/Categories/Categories';
 import Sort from '../../components/Sort/Sort';
 import ProductCardSkeleton from '../../components/ProductCardSkeleton/ProductCardSkeleton';
@@ -8,6 +8,7 @@ import { useFetching } from '../../hooks/useFetching';
 import PostService from '../../API/PostService';
 import classes from './Home.module.scss';
 import Pagination from '../../components/UI/Pagination/Pagination';
+import { SearchContext } from '../../context/context';
 
 const Home = () => {
   const [products, setProducts] = useState<IProduct[]>([]);
@@ -22,30 +23,41 @@ const Home = () => {
   const [activePage, setActivePage] = useState<number>(1);
   const limit = 8;
 
-  const [fetchProducts, isLoading] = useFetching(async () => {
+  const { searchValue } = useContext(SearchContext);
+
+  const [fetchProducts, isLoading, error] = useFetching(async () => {
     const response = await PostService.getProducts(
       activePage,
       limit,
       activeCategory,
       activeSort.sortProperty,
       activeSort.order,
+      searchValue,
     );
     setProducts(response);
   });
 
   const [fetchProductsLength] = useFetching(async () => {
-    const totalCountProducts = await PostService.getProductsCount(activeCategory);
+    const totalCountProducts = await PostService.getProductsCount(activeCategory, searchValue);
     setTotalPages(Math.ceil(totalCountProducts / limit));
   });
 
   useEffect(() => {
     fetchProducts().then();
-  }, [activeCategory, activeSort, activePage]);
+  }, [activeCategory, activeSort, activePage, searchValue]);
 
   useEffect(() => {
     fetchProductsLength().then();
     setActivePage(1);
-  }, [activeCategory]);
+    console.log(totalPages);
+  }, [activeCategory, searchValue]);
+
+  /*
+  Если нужно чтобы SeachInput работал без помощи запроса к бд
+  const productsArray = products
+    .filter((obj) => obj.title.toLowerCase().includes(searchValue.toLowerCase()))
+    .map((obj) => <ProductCard key={obj.id} {...obj} />);
+  */
 
   return (
     <>
@@ -55,7 +67,7 @@ const Home = () => {
       </div>
       <div className={classes.title}>Все товары</div>
       <div className={classes.items}>
-        {isLoading
+        {isLoading || error
           ? [...new Array(8)].map((value, index) => <ProductCardSkeleton key={index} />)
           : products.map((obj) => <ProductCard key={obj.id} {...obj} />)}
       </div>

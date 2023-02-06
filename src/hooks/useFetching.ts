@@ -14,7 +14,6 @@ export const useFetching = (callback: () => Promise<void>) => {
       } else {
         setError(String('Error'));
       }
-      alert('Error');
     } finally {
       setIsLoading(false);
     }
