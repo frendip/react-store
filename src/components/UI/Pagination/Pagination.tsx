@@ -2,14 +2,14 @@ import React, { FC } from 'react';
 import classes from './Pagination.module.scss';
 import { usePagination } from '../../../hooks/usePagination';
 import { CommonButton } from '../Button/Button';
+import { useAppDispatch } from '../../../hooks/useAppDispatch';
+import { useAppSelector } from '../../../hooks/useAppSelector';
+import { setActivePage } from '../../../store/slices/paginationSlice';
 
-interface PaginationProps {
-  totalPages: number;
-  activePage: number;
-  setActivePage: React.ComponentState;
-}
+const Pagination: FC = () => {
+  const { totalPages, activePage } = useAppSelector((state) => state.pagination);
+  const dispatch = useAppDispatch();
 
-const Pagination: FC<PaginationProps> = ({ totalPages, activePage, setActivePage }) => {
   const pagesArray = usePagination(totalPages);
 
   return (
@@ -19,7 +19,7 @@ const Pagination: FC<PaginationProps> = ({ totalPages, activePage, setActivePage
           variant={'secondary'}
           active={activePage === page}
           key={page}
-          onClick={() => setActivePage(page)}>
+          onClick={() => dispatch(setActivePage(page))}>
           {page}
         </CommonButton>
       ))}

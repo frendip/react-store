@@ -1,14 +1,15 @@
 import React, { FC } from 'react';
 import classes from './Categories.module.scss';
 import { CommonButton } from '../UI/Button/Button';
+import { useAppDispatch } from '../../hooks/useAppDispatch';
+import { useAppSelector } from '../../hooks/useAppSelector';
+import { setActiveCategory } from '../../store/slices/filterSlice';
 
-interface CategoriesProps {
-  activeCategory: number;
-  setActiveCategory: React.ComponentState;
-}
+const categories = ['Все', 'Iphone', 'IPad', 'Mac', 'AirPods'];
 
-const Categories: FC<CategoriesProps> = ({ activeCategory, setActiveCategory }) => {
-  const categories = ['Все', 'Iphone', 'IPad', 'Mac', 'AirPods'];
+const Categories: FC = () => {
+  const dispatch = useAppDispatch();
+  const activeCategory = useAppSelector((state) => state.filter.activeCategory);
 
   return (
     <div className={classes.categories}>
@@ -16,7 +17,7 @@ const Categories: FC<CategoriesProps> = ({ activeCategory, setActiveCategory }) 
         {categories.map((value, index) => (
           <CommonButton
             key={value}
-            onClick={() => setActiveCategory(index)}
+            onClick={() => dispatch(setActiveCategory(index))}
             active={activeCategory === index}
             variant={'primary'}
             size={'small'}

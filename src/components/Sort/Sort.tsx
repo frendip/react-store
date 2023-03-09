@@ -2,23 +2,25 @@ import React, { FC, useState } from 'react';
 import classes from './Sort.module.scss';
 import clsx from 'clsx';
 import { ISort } from '../types/types';
+import { useAppDispatch } from '../../hooks/useAppDispatch';
+import { useAppSelector } from '../../hooks/useAppSelector';
+import { setActiveSort } from '../../store/slices/filterSlice';
 
-interface SortProps {
-  activeSort: ISort;
-  setActiveSort: React.ComponentState;
-}
+const sortList: ISort[] = [
+  { name: 'Популярности (по возрастанию)', sortProperty: 'rating', order: 'asc' },
+  { name: 'Популярности (по убыванию)', sortProperty: 'rating', order: 'desc' },
+  { name: 'Цене (по возрастанию)', sortProperty: 'price', order: 'asc' },
+  { name: 'Цене (по убыванию)', sortProperty: 'price', order: 'desc' },
+];
 
-const Sort: FC<SortProps> = ({ activeSort, setActiveSort }) => {
+const Sort: FC = () => {
   const [isOpenPopup, setIsOpenPopup] = useState<boolean>(false);
-  const sortList: ISort[] = [
-    { name: 'Популярности (по возрастанию)', sortProperty: 'rating', order: 'asc' },
-    { name: 'Популярности (по убыванию)', sortProperty: 'rating', order: 'desc' },
-    { name: 'Цене (по возрастанию)', sortProperty: 'price', order: 'asc' },
-    { name: 'Цене (по убыванию)', sortProperty: 'price', order: 'desc' },
-  ];
+
+  const dispatch = useAppDispatch();
+  const activeSort = useAppSelector((state) => state.filter.activeSort);
 
   const onClickSort = (index: ISort) => {
-    setActiveSort(index);
+    dispatch(setActiveSort(index));
     setIsOpenPopup(!isOpenPopup);
   };
 

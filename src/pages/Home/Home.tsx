@@ -1,27 +1,31 @@
 import React, { useContext, useEffect, useState } from 'react';
+
 import Categories from '../../components/Categories/Categories';
 import Sort from '../../components/Sort/Sort';
 import ProductCardSkeleton from '../../components/ProductCardSkeleton/ProductCardSkeleton';
 import ProductCard from '../../components/ProductCard/ProductCard';
-import { IProduct, ISort } from '../../components/types/types';
+import Pagination from '../../components/UI/Pagination/Pagination';
+
+import { IProduct } from '../../components/types/types';
+
 import { useFetching } from '../../hooks/useFetching';
 import PostService from '../../API/PostService';
-import classes from './Home.module.scss';
-import Pagination from '../../components/UI/Pagination/Pagination';
+
 import { SearchContext } from '../../context/context';
 
-const Home = () => {
-  const [products, setProducts] = useState<IProduct[]>([]);
+import { useAppSelector } from '../../hooks/useAppSelector';
+import { useAppDispatch } from '../../hooks/useAppDispatch';
+import { setActivePage, setTotalPages } from '../../store/slices/paginationSlice';
 
-  const [activeCategory, setActiveCategory] = useState<number>(0);
-  const [activeSort, setActiveSort] = useState<ISort>({
-    name: 'Популярности (по убыванию)',
-    sortProperty: 'rating',
-    order: 'desc',
-  });
-  const [totalPages, setTotalPages] = useState<number>(0);
-  const [activePage, setActivePage] = useState<number>(1);
-  const limit = 8;
+import classes from './Home.module.scss';
+
+const Home = () => {
+  const { activeCategory, activeSort } = useAppSelector((state) => state.filter);
+  const { activePage, totalPages, limit } = useAppSelector((state) => state.pagination);
+
+  const dispatch = useAppDispatch();
+
+  const [products, setProducts] = useState<IProduct[]>([]);
 
   const { searchValue } = useContext(SearchContext);
 
@@ -39,18 +43,17 @@ const Home = () => {
 
   const [fetchProductsLength] = useFetching(async () => {
     const totalCountProducts = await PostService.getProductsCount(activeCategory, searchValue);
-    setTotalPages(Math.ceil(totalCountProducts / limit));
+    dispatch(setTotalPages(Math.ceil(totalCountProducts / limit)));
   });
+
+  useEffect(() => {
+    fetchProductsLength().then();
+    dispatch(setActivePage(1));
+  }, [activeCategory, searchValue]);
 
   useEffect(() => {
     fetchProducts().then();
   }, [activeCategory, activeSort, activePage, searchValue]);
-
-  useEffect(() => {
-    fetchProductsLength().then();
-    setActivePage(1);
-    console.log(totalPages);
-  }, [activeCategory, searchValue]);
 
   /*
   Если нужно чтобы SeachInput работал без помощи запроса к бд
@@ -62,8 +65,8 @@ const Home = () => {
   return (
     <>
       <div className={classes.top}>
-        <Categories activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
-        <Sort activeSort={activeSort} setActiveSort={setActiveSort} />
+        <Categories />
+        <Sort />
       </div>
       <div className={classes.title}>Все товары</div>
       <div className={classes.items}>
@@ -71,9 +74,7 @@ const Home = () => {
           ? [...new Array(8)].map((value, index) => <ProductCardSkeleton key={index} />)
           : products.map((obj) => <ProductCard key={obj.id} {...obj} />)}
       </div>
-      {totalPages > 1 && (
-        <Pagination totalPages={totalPages} activePage={activePage} setActivePage={setActivePage} />
-      )}
+      {totalPages > 1 && <Pagination />}
     </>
   );
 };
