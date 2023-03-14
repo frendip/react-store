@@ -2,7 +2,10 @@ import React, { FC, useState } from 'react';
 import classes from './ProductCard.module.scss';
 import { AddProductButton } from '../UI/Button/Button';
 import clsx from 'clsx';
-import { IProduct } from '../types/types';
+import { IProduct, IProductCart } from '../types/types';
+import { useAppSelector } from '../../hooks/useAppSelector';
+import { useAppDispatch } from '../../hooks/useAppDispatch';
+import { addProduct } from '../../store/slices/cartSlice';
 
 const ProductCard: FC<IProduct> = ({
   id,
@@ -14,9 +17,29 @@ const ProductCard: FC<IProduct> = ({
   category,
   rating,
 }) => {
-  const [productCount, setProductCount] = useState<number>(0);
   const [activeMemory, setActiveMemory] = useState<number>(0);
   const [activeColour, setActiveColour] = useState<number>(0);
+
+  const productProps: IProductCart = {
+    id,
+    image,
+    title,
+    memory: memory[activeMemory],
+    colour: colours[activeColour],
+    price,
+    category,
+    rating,
+    count: 1,
+  };
+
+  const dispatch = useAppDispatch();
+  const productArr = useAppSelector((state) =>
+    state.cart.products.filter((product) => product.id === id),
+  );
+
+  const productCount = productArr
+    ? productArr.reduce((count, product) => product.count + count, 0)
+    : 0;
 
   return (
     <div className={classes.productCard}>
@@ -56,7 +79,7 @@ const ProductCard: FC<IProduct> = ({
       </div>
       <div className={classes.productCard__button}>
         <div className={classes.productCard__price}>От {price} ₽</div>
-        <AddProductButton onClick={() => setProductCount((count) => count + 1)}>
+        <AddProductButton onClick={() => dispatch(addProduct(productProps))}>
           {productCount}
         </AddProductButton>
       </div>

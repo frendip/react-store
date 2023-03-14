@@ -11,6 +11,18 @@ export interface IProduct {
   rating: number;
 }
 
+export interface IProductCart {
+  id: number;
+  image: string;
+  title: string;
+  memory: number;
+  colour: string;
+  price: number;
+  category: number;
+  rating: number;
+  count: number;
+}
+
 export interface ISort {
   name: string;
   sortProperty: string;

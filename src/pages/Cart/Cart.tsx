@@ -5,9 +5,26 @@ import { BaseButton, CommonButton } from '../../components/UI/Button/Button';
 import { useNavigate } from 'react-router-dom';
 import CartItem from '../../components/CartItem/CartItem';
 import classes from './Cart.module.scss';
+import { useAppSelector } from '../../hooks/useAppSelector';
+import { clearCart } from '../../store/slices/cartSlice';
+import { useAppDispatch } from '../../hooks/useAppDispatch';
+import EmptyCart from '../../components/EmptyCart/EmptyCart';
 
 const Cart = () => {
   const navigate = useNavigate();
+
+  const { products, totalCount, totalPrice } = useAppSelector((state) => state.cart);
+  const dispatch = useAppDispatch();
+
+  const clearCartClick = () => {
+    if (window.confirm('Вы действительно хотите очистить корзину?')) {
+      dispatch(clearCart());
+    }
+  };
+
+  if (!totalCount) {
+    return <EmptyCart />;
+  }
 
   return (
     <div className={classes.cartContainer}>
@@ -23,24 +40,26 @@ const Cart = () => {
             <div className={classes.clearCartBtn__img}>
               <img src={iconTrash} alt="icon-trash" />
             </div>
-            <div className={classes.clearCartBtn__text}>Очистить корзину</div>
+            <div onClick={clearCartClick} className={classes.clearCartBtn__text}>
+              Очистить корзину
+            </div>
           </div>
         </BaseButton>
       </div>
       <div className={classes.items}>
-        {[...new Array(3)].map((value, index) => (
-          <React.Fragment key={index}>
+        {products.map((product) => (
+          <React.Fragment key={`${product.id}${product.memory}${product.colour}`}>
             <div className={classes.dividingLine} />
-            <CartItem />
+            <CartItem {...product} />
           </React.Fragment>
         ))}
       </div>
       <div className={classes.paymentInfo}>
         <div className={classes.paymentInfo__productCount}>
-          Всего девайсов: <span>3 шт.</span>
+          Всего девайсов: <span>{totalCount} шт.</span>
         </div>
         <div className={classes.paymentInfo__orderAmount}>
-          Сумма заказа: <span>900 ₽</span>
+          Сумма заказа: <span>{totalPrice} ₽</span>
         </div>
       </div>
       <div className={classes.buttons}>

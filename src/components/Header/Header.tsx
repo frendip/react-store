@@ -6,8 +6,11 @@ import basketLogo from '../../assets/img/icon-basket.png';
 import { Link } from 'react-router-dom';
 import { CommonButton } from '../UI/Button/Button';
 import { SearchInput } from '../UI/Input/Input';
+import { useAppSelector } from '../../hooks/useAppSelector';
 
 const Header: FC = () => {
+  const { totalCount, totalPrice } = useAppSelector((state) => state.cart);
+
   return (
     <div className={classes.header}>
       <div className={classes.header__row}>
@@ -26,12 +29,12 @@ const Header: FC = () => {
         <Link to={'/cart'}>
           <CommonButton variant={'primary'} size={'medium'} borderWidth={'medium'}>
             <div className={clsx(classes.header__basket, classes.basket)}>
-              <div className={classes.basket__price}>520 ₽</div>
+              <div className={classes.basket__price}>{totalPrice} ₽</div>
               <div className={classes.basket__row}>
                 <div className={classes.basket__img}>
                   <img src={basketLogo} alt="basket" />
                 </div>
-                <div className={classes.basket__count}>3</div>
+                <div className={classes.basket__count}>{totalCount}</div>
               </div>
             </div>
           </CommonButton>

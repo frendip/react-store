@@ -18,6 +18,8 @@
   border-radius: 10px;
   overflow: hidden;
   padding: 10px 0;
+  animation-name: popup;
+  animation-duration: 0.3s;
 }
 .sort__list {
   display: flex;
@@ -37,6 +39,15 @@
 }
 .sort__active {
   background: linear-gradient(163deg, rgba(2, 175, 209, 0.35) 0%, rgba(106, 85, 164, 0.35) 100%);
+}
+
+@keyframes popup {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /*# sourceMappingURL=Sort.module.css.map */
