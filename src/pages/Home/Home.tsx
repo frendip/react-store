@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 
 import Categories from '../../components/Categories/Categories';
 import Sort, { sortList } from '../../components/Sort/Sort';
@@ -6,23 +6,20 @@ import ProductCardSkeleton from '../../components/ProductCardSkeleton/ProductCar
 import ProductCard from '../../components/ProductCard/ProductCard';
 import Pagination from '../../components/UI/Pagination/Pagination';
 
-import { IProduct } from '../../components/types/types';
-
-import { useFetching } from '../../hooks/useFetching';
-import PostService from '../../API/PostService';
-
 import { SearchContext } from '../../context/context';
 
 import { useAppSelector } from '../../hooks/useAppSelector';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
-import { setActivePage, setTotalPages } from '../../store/slices/paginationSlice';
+import { setActivePage } from '../../store/slices/paginationSlice';
 
 import classes from './Home.module.scss';
 import qs from 'qs';
 import { useNavigate } from 'react-router-dom';
 import { setFiltersFromUrl } from '../../store/slices/filterSlice';
+import { fetchProducts, fetchProductsCount } from '../../store/slices/productsSlice';
 
 const Home = () => {
+  const { products, status } = useAppSelector((state) => state.products);
   const { activeCategory, activeSort } = useAppSelector((state) => state.filter);
   const { activePage, totalPages, limit } = useAppSelector((state) => state.pagination);
   const { searchValue } = useContext(SearchContext);
@@ -31,25 +28,6 @@ const Home = () => {
   const navigate = useNavigate();
   const isSearch = useRef(false);
   const countRendering = useRef(0);
-
-  const [products, setProducts] = useState<IProduct[]>([]);
-
-  const [fetchProducts, isLoading, error] = useFetching(async () => {
-    const response = await PostService.getProducts(
-      activePage,
-      limit,
-      activeCategory,
-      activeSort.sortProperty,
-      activeSort.order,
-      searchValue,
-    );
-    setProducts(response);
-  });
-
-  const [fetchProductsLength] = useFetching(async () => {
-    const totalCountProducts = await PostService.getProductsCount(activeCategory, searchValue);
-    dispatch(setTotalPages(Math.ceil(totalCountProducts / limit)));
-  });
 
   useEffect(() => {
     if (countRendering.current > 1) {
@@ -90,13 +68,20 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    fetchProductsLength().then();
-    dispatch(setActivePage(1));
+    dispatch(fetchProductsCount({ activeCategory, searchValue }));
   }, [activeCategory, searchValue]);
 
   useEffect(() => {
     if (!isSearch.current) {
-      fetchProducts().then();
+      dispatch(
+        fetchProducts({
+          activePage,
+          limit,
+          activeCategory,
+          activeSort,
+          searchValue,
+        }),
+      );
     }
     isSearch.current = false;
   }, [activeCategory, activeSort, activePage, searchValue]);
@@ -116,7 +101,7 @@ const Home = () => {
       </div>
       <div className={classes.title}>Все товары</div>
       <div className={classes.items}>
-        {isLoading || error
+        {status === 'loading' || status === 'error'
           ? [...new Array(8)].map((value, index) => <ProductCardSkeleton key={index} />)
           : products.map((obj) => <ProductCard key={obj.id} {...obj} />)}
       </div>

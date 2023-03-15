@@ -1,3 +1,5 @@
+// В данный момент бизнес логика реализуется через асинхронные экшены редакса, код остался для примера
+
 export default class PostService {
   static async getProducts(
     activePage: number,
