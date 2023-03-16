@@ -209,5 +209,37 @@
     "price": 18490,
     "category": 4,
     "rating": 9
+  },
+  {
+    "id": 13,
+    "image": "macStudio",
+    "title": "Apple Mac Studio MJMV3",
+    "memory": [
+      512,
+      1024
+    ],
+    "colours": [
+      "Белый",
+      "Серый"
+    ],
+    "price": 309990,
+    "category": 3,
+    "rating": 7
+  },
+  {
+    "id": 14,
+    "image": "iMac",
+    "title": "iMac 5K 27\" MXWT2 (2020)",
+    "memory": [
+      256,
+      512
+    ],
+    "colours": [
+      "Белый",
+      "Серый"
+    ],
+    "price": 324990,
+    "category": 3,
+    "rating": 8
   }
 ]
