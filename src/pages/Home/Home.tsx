@@ -16,7 +16,7 @@ import classes from './Home.module.scss';
 import qs from 'qs';
 import { useNavigate } from 'react-router-dom';
 import { setFiltersFromUrl } from '../../store/slices/filterSlice';
-import { fetchProducts, fetchProductsCount } from '../../store/slices/productsSlice';
+import { fetchProducts } from '../../store/slices/productsSlice';
 
 const Home = () => {
   const { products, status } = useAppSelector((state) => state.products);
@@ -68,7 +68,7 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    dispatch(fetchProductsCount({ activeCategory, searchValue }));
+    dispatch(setActivePage(1));
   }, [activeCategory, searchValue]);
 
   useEffect(() => {

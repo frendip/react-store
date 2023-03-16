@@ -7,8 +7,8 @@ interface paginationState {
 }
 
 const initialState: paginationState = {
-  totalPages: 0,
-  activePage: 0,
+  totalPages: 1,
+  activePage: 1,
   limit: 8,
 };
 

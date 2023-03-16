@@ -1,7 +1,7 @@
 import { IProduct, ISort } from '../../components/types/types';
 import { AnyAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { setActivePage, setTotalPages } from './paginationSlice';
-import { RootState } from '../store';
+import { setTotalPages } from './paginationSlice';
+import PostService from '../../API/PostService';
 
 export const fetchProducts = createAsyncThunk<
   IProduct[],
@@ -14,30 +14,18 @@ export const fetchProducts = createAsyncThunk<
   }
 >(
   'products/fetchProducts',
-  async ({ activePage, limit, activeCategory, activeSort, searchValue }) => {
-    const category = activeCategory > 0 ? `&category=${activeCategory}` : '';
-    const search = searchValue ? `&search=${searchValue}` : '';
-    const url = `https://63d78ad7afbba6b7c93f22b1.mockapi.io/products?page=${activePage}&limit=${limit}${category}&sortBy=${activeSort.sortProperty}&order=${activeSort.order}${search}`;
-    const response = await fetch(url);
-    return await response.json();
-  },
-);
+  async ({ activePage, limit, activeCategory, activeSort, searchValue }, { dispatch }) => {
+    const productsCount = await PostService.getProductsCount(activeCategory, searchValue);
+    dispatch(setTotalPages(Math.ceil(productsCount / limit)));
 
-export const fetchProductsCount = createAsyncThunk<
-  void,
-  { activeCategory: number; searchValue: string },
-  { state: RootState }
->(
-  'products/fetchProductsCount',
-  async ({ activeCategory, searchValue }, { dispatch, getState }) => {
-    const category = activeCategory > 0 ? `&category=${activeCategory}` : '';
-    const search = searchValue ? `&search=${searchValue}` : '';
-    const url = `https://63d78ad7afbba6b7c93f22b1.mockapi.io/products?${category}${search}`;
-    const response = await fetch(url);
-    const result = await response.json();
-    const limit = getState()['pagination'].limit;
-    dispatch(setTotalPages(Math.ceil(result.length / limit)));
-    dispatch(setActivePage(1));
+    return await PostService.getProducts(
+      activePage,
+      limit,
+      activeCategory,
+      activeSort.sortProperty,
+      activeSort.order,
+      searchValue,
+    );
   },
 );
 
