@@ -100,11 +100,20 @@ const Home = () => {
         <Sort />
       </div>
       <div className={classes.title}>Все товары</div>
-      <div className={classes.items}>
-        {status === 'loading' || status === 'error'
-          ? [...new Array(8)].map((value, index) => <ProductCardSkeleton key={index} />)
-          : products.map((obj) => <ProductCard key={obj.id} {...obj} />)}
-      </div>
+      {status === 'error' ? (
+        <div className={classes.error}>
+          <h2 className={classes.error__title}>Произошла ошибка.</h2>
+          <div className={classes.error__description}>
+            К сожалению, не загрузить товары. Попробуйте повторить попытку позже
+          </div>
+        </div>
+      ) : (
+        <div className={classes.items}>
+          {status === 'loading'
+            ? [...new Array(8)].map((value, index) => <ProductCardSkeleton key={index} />)
+            : products.map((obj) => <ProductCard key={obj.id} {...obj} />)}
+        </div>
+      )}
       {totalPages > 1 && <Pagination />}
     </>
   );

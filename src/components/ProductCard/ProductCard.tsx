@@ -44,7 +44,7 @@ const ProductCard: FC<IProduct> = ({
   return (
     <div className={classes.productCard}>
       <div className={classes.productCard__img}>
-        <img src={require(`../../assets/img/${image}.png`)} alt="iphone14Pro" />
+        <img src={require(`../../assets/img/${image}.png`)} alt="product" />
       </div>
       <div className={classes.productCard__title}>{title}</div>
       <div className={classes.productCard__selector}>
