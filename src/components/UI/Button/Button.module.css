@@ -11,9 +11,37 @@
   background-color: #e0e0e0;
 }
 
-.addProductBtn {
+.sizeXSmall {
   padding: 3px 10px;
-  border: 2px solid rgb(106, 85, 164);
+}
+
+.sizeSmall {
+  padding: 5px 15px;
+}
+
+.sizeMedium {
+  padding: 10px 30px;
+}
+
+.sizeLarge {
+  padding: 15px 60px;
+}
+
+.borderThin {
+  border-width: 1px;
+}
+
+.borderMedium {
+  border-width: 2px;
+}
+
+.borderThick {
+  border-width: 3px;
+}
+
+.addProductBtn {
+  border-style: solid;
+  border-color: rgb(106, 85, 164);
 }
 .addProductBtn__count {
   display: inline-block;
@@ -46,24 +74,6 @@
 .commonBtn__secondary {
   border-style: solid;
   border-color: rgb(106, 85, 164);
-}
-.commonBtn__sizeSmall {
-  padding: 5px 15px;
-}
-.commonBtn__sizeMedium {
-  padding: 10px 30px;
-}
-.commonBtn__sizeLarge {
-  padding: 15px 60px;
-}
-.commonBtn__borderThin {
-  border-width: 1px;
-}
-.commonBtn__borderMedium {
-  border-width: 2px;
-}
-.commonBtn__borderThick {
-  border-width: 3px;
 }
 .commonBtn__active {
   border: 3px solid rgb(106, 85, 164);

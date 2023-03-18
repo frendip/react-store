@@ -2,11 +2,13 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ISort } from '../../components/types/types';
 
 interface filterState {
+  searchValue: string;
   activeCategory: number;
   activeSort: ISort;
 }
 
 const initialState: filterState = {
+  searchValue: '',
   activeCategory: 0,
   activeSort: {
     name: 'Популярности (по убыванию)',
@@ -19,6 +21,9 @@ const filterSlice = createSlice({
   name: 'filter',
   initialState,
   reducers: {
+    setSearchValue(state, action: PayloadAction<string>) {
+      state.searchValue = action.payload;
+    },
     setActiveCategory(state, action: PayloadAction<number>) {
       state.activeCategory = action.payload;
     },
@@ -32,6 +37,7 @@ const filterSlice = createSlice({
   },
 });
 
-export const { setActiveCategory, setActiveSort, setFiltersFromUrl } = filterSlice.actions;
+export const { setSearchValue, setActiveCategory, setActiveSort, setFiltersFromUrl } =
+  filterSlice.actions;
 
 export default filterSlice.reducer;

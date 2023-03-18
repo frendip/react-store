@@ -1,12 +1,10 @@
-import React, { useContext, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import Categories from '../../components/Categories/Categories';
 import Sort, { sortList } from '../../components/Sort/Sort';
 import ProductCardSkeleton from '../../components/ProductCardSkeleton/ProductCardSkeleton';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import Pagination from '../../components/UI/Pagination/Pagination';
-
-import { SearchContext } from '../../context/context';
 
 import { useAppSelector } from '../../hooks/useAppSelector';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
@@ -20,30 +18,25 @@ import { fetchProducts } from '../../store/slices/productsSlice';
 
 const Home = () => {
   const { products, status } = useAppSelector((state) => state.products);
-  const { activeCategory, activeSort } = useAppSelector((state) => state.filter);
+  const { searchValue, activeCategory, activeSort } = useAppSelector((state) => state.filter);
   const { activePage, totalPages, limit } = useAppSelector((state) => state.pagination);
-  const { searchValue } = useContext(SearchContext);
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const isSearch = useRef(false);
-  const countRendering = useRef(0);
+  const didUpdate = useRef(false);
 
   useEffect(() => {
-    if (countRendering.current > 1) {
+    if (didUpdate.current) {
       const queryString = qs.stringify({
         activeCategory,
         activeSortProperty: activeSort.sortProperty,
         activeSortOrder: activeSort.order,
         activePage,
       });
-
       navigate(`?${queryString}`);
     }
-
-    if (countRendering.current < 2) {
-      countRendering.current++;
-    }
+    didUpdate.current = true;
   }, [activeCategory, activeSort, activePage]);
 
   useEffect(() => {

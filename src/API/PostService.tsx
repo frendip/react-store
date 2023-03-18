@@ -16,6 +16,12 @@ export default class PostService {
     return await response.json();
   }
 
+  static async getProductById(id: string) {
+    const url = `https://63d78ad7afbba6b7c93f22b1.mockapi.io/products/${id}`;
+    const response = await fetch(url);
+    return await response.json();
+  }
+
   static async getProductsCount(activeCategory: number, searchValue: string) {
     const category = activeCategory > 0 ? `&category=${activeCategory}` : '';
     const search = searchValue ? `&search=${searchValue}` : '';

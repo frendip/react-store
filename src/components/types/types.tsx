@@ -9,6 +9,7 @@ export interface IProduct {
   price: number;
   category: number;
   rating: number;
+  descriptionCharacteristics: string[];
 }
 
 export interface IProductCart {
@@ -18,8 +19,6 @@ export interface IProductCart {
   memory: number;
   colour: string;
   price: number;
-  category: number;
-  rating: number;
   count: number;
 }
 

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 export const useFetching = (callback: () => Promise<void>) => {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>('');
 
   const fetching = async () => {

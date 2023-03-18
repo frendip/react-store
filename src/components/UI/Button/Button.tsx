@@ -2,6 +2,19 @@ import React, { FC, HTMLAttributes } from 'react';
 import clsx from 'clsx';
 import classes from './Button.module.scss';
 
+const sizeStyle = {
+  xsmall: classes.sizeXSmall,
+  small: classes.sizeSmall,
+  medium: classes.sizeMedium,
+  large: classes.sizeLarge,
+};
+
+const borderWidthStyle = {
+  thin: classes.borderThin,
+  medium: classes.borderMedium,
+  thick: classes.borderThick,
+};
+
 interface BaseButtonProps extends HTMLAttributes<HTMLButtonElement> {}
 
 export const BaseButton: FC<BaseButtonProps> = ({ children, className, ...props }) => {
@@ -14,11 +27,20 @@ export const BaseButton: FC<BaseButtonProps> = ({ children, className, ...props 
 
 interface AddProductButtonProps extends BaseButtonProps {
   active?: boolean;
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
+  borderWidth?: 'thin' | 'medium' | 'thick';
 }
 
-export const AddProductButton: FC<AddProductButtonProps> = ({ children, ...props }) => {
+export const AddProductButton: FC<AddProductButtonProps> = ({
+  children,
+  size = 'xsmall',
+  borderWidth = 'medium',
+  ...props
+}) => {
   return (
-    <BaseButton {...props} className={classes.addProductBtn}>
+    <BaseButton
+      className={clsx(classes.addProductBtn, sizeStyle[size], borderWidthStyle[borderWidth])}
+      {...props}>
       + Добавить{' '}
       {children !== 0 && <span className={classes.addProductBtn__count}>{children}</span>}
     </BaseButton>
@@ -35,18 +57,6 @@ interface CommonButtonProps extends BaseButtonProps {
 const variantStyle = {
   primary: classes.commonBtn__primary,
   secondary: classes.commonBtn__secondary,
-};
-
-const sizeStyle = {
-  small: classes.commonBtn__sizeSmall,
-  medium: classes.commonBtn__sizeMedium,
-  large: classes.commonBtn__sizeLarge,
-};
-
-const borderWidthStyle = {
-  thin: classes.commonBtn__borderThin,
-  medium: classes.commonBtn__borderMedium,
-  thick: classes.commonBtn__borderThick,
 };
 
 export const CommonButton: FC<CommonButtonProps> = ({

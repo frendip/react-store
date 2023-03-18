@@ -1,18 +1,11 @@
-import {
-  ChangeEvent,
-  FC,
-  forwardRef,
-  InputHTMLAttributes,
-  useContext,
-  useRef,
-  useState,
-} from 'react';
+import { ChangeEvent, FC, forwardRef, InputHTMLAttributes, useRef, useState } from 'react';
 import iconMagnifier from '../../../assets/img/icon-magnifier.png';
 import iconClear from '../../../assets/img/icon-clear.png';
 import classes from './Input.module.scss';
 import clsx from 'clsx';
-import { SearchContext } from '../../../context/context';
 import { useDebounce } from '../../../hooks/useDebounce';
+import { useAppDispatch } from '../../../hooks/useAppDispatch';
+import { setSearchValue } from '../../../store/slices/filterSlice';
 
 interface BaseInputProps extends InputHTMLAttributes<HTMLInputElement> {}
 
@@ -27,9 +20,10 @@ BaseInput.displayName = 'BaseInput';
 interface SearchInputProps extends BaseInputProps {}
 
 export const SearchInput: FC<SearchInputProps> = () => {
-  const { setSearchValue } = useContext(SearchContext);
+  const dispatch = useAppDispatch();
+
   const [localSearchValue, setLocalSearchValue] = useState<string>('');
-  const debouncedSearch = useDebounce(setSearchValue, 300);
+  const debouncedSearch = useDebounce((str: string) => dispatch(setSearchValue(str)), 300);
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -40,7 +34,7 @@ export const SearchInput: FC<SearchInputProps> = () => {
 
   const clearHandler = () => {
     setLocalSearchValue('');
-    setSearchValue('');
+    dispatch(setSearchValue(''));
     if (inputRef.current) {
       inputRef.current.focus();
     }

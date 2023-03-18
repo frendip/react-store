@@ -57,6 +57,7 @@ const productsSlice = createSlice({
       })
       .addMatcher(isError, (state) => {
         state.status = 'error';
+        state.products = [];
       });
   },
 });
