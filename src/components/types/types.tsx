@@ -1,7 +1,7 @@
 import React from 'react';
 
 export interface IProduct {
-  id: number;
+  id: string;
   image: string;
   title: string;
   memory: number[];
@@ -13,7 +13,7 @@ export interface IProduct {
 }
 
 export interface IProductCart {
-  id: number;
+  id: string;
   image: string;
   title: string;
   memory: number;

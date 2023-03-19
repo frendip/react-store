@@ -35,7 +35,7 @@ const cartSlice = createSlice({
         0,
       );
     },
-    removeProduct(state, action: PayloadAction<{ id: number; memory: number; colour: string }>) {
+    removeProduct(state, action: PayloadAction<{ id: string; memory: number; colour: string }>) {
       const findProduct = state.products.find(
         (product) =>
           product.id === action.payload.id &&
@@ -58,7 +58,7 @@ const cartSlice = createSlice({
       state.totalPrice = 0;
       state.totalCount = 0;
     },
-    minusItem(state, action: PayloadAction<{ id: number; memory: number; colour: string }>) {
+    minusItem(state, action: PayloadAction<{ id: string; memory: number; colour: string }>) {
       const findProduct = state.products.find(
         (product) =>
           product.id === action.payload.id &&
@@ -81,7 +81,7 @@ const cartSlice = createSlice({
         }
       }
     },
-    plusItem(state, action: PayloadAction<{ id: number; memory: number; colour: string }>) {
+    plusItem(state, action: PayloadAction<{ id: string; memory: number; colour: string }>) {
       const findProduct = state.products.find(
         (product) =>
           product.id === action.payload.id &&

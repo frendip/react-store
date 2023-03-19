@@ -25,9 +25,8 @@ const ProductId = () => {
   const dispatch = useAppDispatch();
 
   const productArr = useAppSelector((state) =>
-    state.cart.products.filter((product) => product.id === Number(id)),
+    state.cart.products.filter((product) => product.id === id),
   );
-  console.log('productId - ', productArr);
 
   const productCount = productArr
     ? productArr.reduce((count, product) => product.count + count, 0)
@@ -47,7 +46,7 @@ const ProductId = () => {
   useEffect(() => {
     if (didUpdate.current) {
       setProductForCart({
-        id: Number(id),
+        id: product.id,
         image: product.image,
         title: product.title,
         memory: product.memory[activeMemory],

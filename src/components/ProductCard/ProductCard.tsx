@@ -15,7 +15,7 @@ const ProductCard: FC<IProduct> = ({ id, image, title, memory, colours, price })
   const navigate = useNavigate();
 
   const productProps: IProductCart = {
-    id: Number(id),
+    id: id,
     image,
     title,
     memory: memory[activeMemory],
@@ -27,9 +27,8 @@ const ProductCard: FC<IProduct> = ({ id, image, title, memory, colours, price })
   const dispatch = useAppDispatch();
 
   const productArr = useAppSelector((state) =>
-    state.cart.products.filter((product) => product.id === Number(id)),
+    state.cart.products.filter((product) => product.id === id),
   );
-  console.log('productCard - ', productArr);
 
   const productCount = productArr
     ? productArr.reduce((count, product) => product.count + count, 0)
