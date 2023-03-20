@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { IProduct, IProductCart } from '../../components/types/types';
 import { useFetching } from '../../hooks/useFetching';
@@ -15,12 +15,10 @@ const ProductId = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const didUpdate = useRef(false);
-
-  const [product, setProduct] = useState({} as IProduct);
+  const [product, setProduct] = useState<IProduct>({} as IProduct);
+  const [productForCart, setProductForCart] = useState<IProductCart>({} as IProductCart);
   const [activeMemory, setActiveMemory] = useState<number>(0);
   const [activeColour, setActiveColour] = useState<number>(0);
-  const [productForCart, setProductForCart] = useState<IProductCart>({} as IProductCart);
 
   const dispatch = useAppDispatch();
 
@@ -44,7 +42,7 @@ const ProductId = () => {
   }, []);
 
   useEffect(() => {
-    if (didUpdate.current) {
+    if (Object.keys(product).length) {
       setProductForCart({
         id: product.id,
         image: product.image,
@@ -55,7 +53,6 @@ const ProductId = () => {
         count: 1,
       });
     }
-    didUpdate.current = true;
   }, [product, activeColour, activeMemory]);
 
   return (
