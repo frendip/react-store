@@ -5,8 +5,11 @@ import { CartItemButton } from '../UI/Button/Button';
 import { IProductCart } from '../types/types';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { minusItem, plusItem, removeProduct } from '../../store/slices/cartSlice';
+import { useNavigate } from 'react-router-dom';
 
 const CartItem: FC<IProductCart> = ({ id, image, title, memory, colour, price, count }) => {
+  const navigate = useNavigate();
+
   const dispatch = useAppDispatch();
 
   const removeProductClick = () => {
@@ -18,7 +21,7 @@ const CartItem: FC<IProductCart> = ({ id, image, title, memory, colour, price, c
   return (
     <div className={classes.cartItem}>
       <div className={clsx(classes.cartItem__product, classes.product)}>
-        <div className={classes.product__img}>
+        <div onClick={() => navigate(`/product/${id}`)} className={classes.product__img}>
           <img src={require(`../../assets/img/${image}.png`)} alt="product IMG" />
         </div>
         <div className={classes.product__col}>

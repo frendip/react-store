@@ -17,6 +17,7 @@
   gap: 0 5px;
 }
 .product__img {
+  cursor: pointer;
   position: relative;
   width: 70px;
   height: 70px;
