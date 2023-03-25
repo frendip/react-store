@@ -19,7 +19,7 @@ const Sort: FC = () => {
   const dispatch = useAppDispatch();
   const activeSort = useAppSelector((state) => state.filter.activeSort);
 
-  const sortRef = useRef(null);
+  const sortRef = useRef<HTMLDivElement>(null);
 
   const onClickSort = (index: ISort) => {
     dispatch(setActiveSort(index));

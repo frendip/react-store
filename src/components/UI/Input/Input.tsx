@@ -35,9 +35,7 @@ export const SearchInput: FC<SearchInputProps> = () => {
   const clearHandler = () => {
     setLocalSearchValue('');
     dispatch(setSearchValue(''));
-    if (inputRef.current) {
-      inputRef.current.focus();
-    }
+    inputRef.current?.focus();
   };
 
   return (

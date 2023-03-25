@@ -42,17 +42,15 @@ const ProductId = () => {
   }, []);
 
   useEffect(() => {
-    if (Object.keys(product).length) {
-      setProductForCart({
-        id: product.id,
-        image: product.image,
-        title: product.title,
-        memory: product.memory[activeMemory],
-        colour: product.colours[activeColour],
-        price: product.price,
-        count: 1,
-      });
-    }
+    setProductForCart({
+      id: product.id,
+      image: product.image,
+      title: product.title,
+      memory: product.memory?.[activeMemory],
+      colour: product.colours?.[activeColour],
+      price: product.price,
+      count: 1,
+    });
   }, [product, activeColour, activeMemory]);
 
   return (
