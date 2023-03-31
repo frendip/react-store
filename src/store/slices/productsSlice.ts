@@ -29,14 +29,20 @@ export const fetchProducts = createAsyncThunk<
   },
 );
 
+enum Status {
+  LOADING = 'loading',
+  SUCCESS = 'success',
+  ERROR = 'error',
+}
+
 interface productsState {
   products: IProduct[];
-  status: 'loading' | 'success' | 'error';
+  status: Status;
 }
 
 const initialState: productsState = {
   products: [],
-  status: 'loading',
+  status: Status.LOADING,
 };
 
 const productsSlice = createSlice({
@@ -49,14 +55,14 @@ const productsSlice = createSlice({
         state.products = action.payload;
       })
       .addMatcher(isPending, (state) => {
-        state.status = 'loading';
+        state.status = Status.LOADING;
         state.products = [];
       })
       .addMatcher(isFulfilled, (state) => {
-        state.status = 'success';
+        state.status = Status.SUCCESS;
       })
       .addMatcher(isError, (state) => {
-        state.status = 'error';
+        state.status = Status.ERROR;
         state.products = [];
       });
   },
