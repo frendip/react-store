@@ -15,10 +15,7 @@ export const fetchProducts = createAsyncThunk<
 >(
   'products/fetchProducts',
   async ({ activePage, limit, activeCategory, activeSort, searchValue }, { dispatch }) => {
-    const productsCount = await PostService.getProductsCount(activeCategory, searchValue);
-    dispatch(setTotalPages(Math.ceil(productsCount / limit)));
-
-    return await PostService.getProducts(
+    const { data: products, totalCount } = await PostService.getProducts(
       activePage,
       limit,
       activeCategory,
@@ -26,6 +23,8 @@ export const fetchProducts = createAsyncThunk<
       activeSort.order,
       searchValue,
     );
+    totalCount && dispatch(setTotalPages(Math.ceil(+totalCount / limit)));
+    return products;
   },
 );
 
