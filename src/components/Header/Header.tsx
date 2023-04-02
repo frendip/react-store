@@ -25,24 +25,20 @@ const Header: FC = () => {
             <h5 className={classes.header__subtitle}>Самые лучшие цены!</h5>
           </div>
         </div>
-        {path === '/' && (
-          <>
-            <SearchInput />
-            <Link to={'/cart'}>
-              <CommonButton variant={'primary'} size={'medium'} borderWidth={'medium'}>
-                <div className={clsx(classes.header__basket, classes.basket)}>
-                  <div className={classes.basket__price}>{totalPrice} ₽</div>
-                  <div className={classes.basket__row}>
-                    <div className={classes.basket__img}>
-                      <img src={basketLogo} alt="basket" />
-                    </div>
-                    <div className={classes.basket__count}>{totalCount}</div>
-                  </div>
+        {path === '/' && <SearchInput />}
+        <Link to={'/cart'}>
+          <CommonButton variant={'primary'} size={'medium'} borderWidth={'medium'}>
+            <div className={clsx(classes.header__basket, classes.basket)}>
+              <div className={classes.basket__price}>{totalPrice} ₽</div>
+              <div className={classes.basket__row}>
+                <div className={classes.basket__img}>
+                  <img src={basketLogo} alt="basket" />
                 </div>
-              </CommonButton>
-            </Link>
-          </>
-        )}
+                <div className={classes.basket__count}>{totalCount}</div>
+              </div>
+            </div>
+          </CommonButton>
+        </Link>
       </div>
     </div>
   );
