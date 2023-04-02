@@ -34,20 +34,16 @@ const CartItem: FC<IProductCart> = ({ id, image, title, memory, colour, price, c
       <div className={clsx(classes.cartItem__count, classes.count)}>
         <CartItemButton
           onClick={() => dispatch(minusItem({ id, memory, colour }))}
-          action={'counter'}>
-          -
-        </CartItemButton>
+          action={'minus'}
+        />
         <div className={classes.count__number}>{count}</div>
         <CartItemButton
           onClick={() => dispatch(plusItem({ id, memory, colour }))}
-          action={'counter'}>
-          +
-        </CartItemButton>
+          action={'plus'}
+        />
       </div>
       <div className={classes.cartItem__amount}>{price * count} ₽</div>
-      <CartItemButton onClick={removeProductClick} action={'delete'}>
-        X
-      </CartItemButton>
+      <CartItemButton onClick={removeProductClick} action={'delete'} />
     </div>
   );
 };

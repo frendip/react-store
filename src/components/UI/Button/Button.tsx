@@ -1,6 +1,9 @@
 import React, { FC, HTMLAttributes } from 'react';
 import clsx from 'clsx';
 import classes from './Button.module.scss';
+import plusIcon from '../../../assets/img/icon-plus.png';
+import minusIcon from '../../../assets/img/icon-minus.png';
+import deleteIcon from '../../../assets/img/icon-delete.png';
 
 const sizeStyle = {
   xsmall: classes.sizeXSmall,
@@ -83,22 +86,23 @@ export const CommonButton: FC<CommonButtonProps> = ({
 };
 
 interface CartItemButtonProps extends BaseButtonProps {
-  action?: 'counter' | 'delete';
+  action?: 'plus' | 'minus' | 'delete';
 }
-
-const actionStyle = {
-  counter: classes.cartItemBtn__counter,
-  delete: classes.cartItemBtn__delete,
-};
 
 export const CartItemButton: FC<CartItemButtonProps> = ({
   children,
-  action = 'counter',
+  action = 'plus',
   ...props
 }) => {
+  const icons = {
+    plus: plusIcon,
+    minus: minusIcon,
+    delete: deleteIcon,
+  };
+
   return (
-    <BaseButton className={clsx(classes.cartItemBtn, actionStyle[action])} {...props}>
-      {children}
+    <BaseButton className={classes.cartItemBtn} {...props}>
+      <img src={icons[action]} alt="action" />
     </BaseButton>
   );
 };

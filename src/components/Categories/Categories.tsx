@@ -7,7 +7,7 @@ import { setActiveCategory } from '../../store/slices/filterSlice';
 
 const categories = ['Все', 'Iphone', 'IPad', 'Mac', 'AirPods'];
 
-const Categories: FC = () => {
+const Categories: FC = React.memo(() => {
   const dispatch = useAppDispatch();
   const activeCategory = useAppSelector((state) => state.filter.activeCategory);
 
@@ -28,6 +28,6 @@ const Categories: FC = () => {
       </div>
     </div>
   );
-};
+});
 
 export default Categories;

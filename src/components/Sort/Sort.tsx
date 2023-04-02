@@ -13,7 +13,7 @@ export const sortList: ISort[] = [
   { name: 'Цене (по убыванию)', sortProperty: 'price', order: 'desc' },
 ];
 
-const Sort: FC = () => {
+const Sort: FC = React.memo(() => {
   const [isOpenPopup, setIsOpenPopup] = useState<boolean>(false);
 
   const dispatch = useAppDispatch();
@@ -64,6 +64,6 @@ const Sort: FC = () => {
       )}
     </div>
   );
-};
+});
 
 export default Sort;
