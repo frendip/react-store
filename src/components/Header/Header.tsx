@@ -1,16 +1,16 @@
 import React, { FC } from 'react';
-import clsx from 'clsx';
 import classes from './Header.module.scss';
-import iphoneLogo from '../../assets/img/icon-iphone2.png';
 import basketLogo from '../../assets/img/icon-basket.png';
-import { Link } from 'react-router-dom';
-import { CommonButton } from '../UI/Button/Button';
-import { SearchInput } from '../UI/Input/Input';
+import iphoneLogo from '../../assets/img/icon-iphone2.png';
+import { Link, useLocation } from 'react-router-dom';
 import { useAppSelector } from '../../hooks/useAppSelector';
+import { SearchInput } from '../UI/Input/Input';
+import { CommonButton } from '../UI/Button/Button';
+import clsx from 'clsx';
 
 const Header: FC = () => {
   const { totalCount, totalPrice } = useAppSelector((state) => state.cart);
-
+  const { pathname: path } = useLocation();
   return (
     <div className={classes.header}>
       <div className={classes.header__row}>
@@ -25,20 +25,24 @@ const Header: FC = () => {
             <h5 className={classes.header__subtitle}>Самые лучшие цены!</h5>
           </div>
         </div>
-        <SearchInput />
-        <Link to={'/cart'}>
-          <CommonButton variant={'primary'} size={'medium'} borderWidth={'medium'}>
-            <div className={clsx(classes.header__basket, classes.basket)}>
-              <div className={classes.basket__price}>{totalPrice} ₽</div>
-              <div className={classes.basket__row}>
-                <div className={classes.basket__img}>
-                  <img src={basketLogo} alt="basket" />
+        {path === '/' && (
+          <>
+            <SearchInput />
+            <Link to={'/cart'}>
+              <CommonButton variant={'primary'} size={'medium'} borderWidth={'medium'}>
+                <div className={clsx(classes.header__basket, classes.basket)}>
+                  <div className={classes.basket__price}>{totalPrice} ₽</div>
+                  <div className={classes.basket__row}>
+                    <div className={classes.basket__img}>
+                      <img src={basketLogo} alt="basket" />
+                    </div>
+                    <div className={classes.basket__count}>{totalCount}</div>
+                  </div>
                 </div>
-                <div className={classes.basket__count}>{totalCount}</div>
-              </div>
-            </div>
-          </CommonButton>
-        </Link>
+              </CommonButton>
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );
