@@ -6,3 +6,11 @@ body {
   background: linear-gradient(163deg, rgba(2, 175, 209, 1) 0%, rgba(106, 85, 164, 1) 100%) no-repeat
     fixed;
 }
+
+.lazyPreview {
+  position: relative;
+  height: 75vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

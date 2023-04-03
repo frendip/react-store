@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { Suspense } from 'react';
+import classes from './MainStyles/MainStyles.module.scss';
 import Home from './pages/Home/Home';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout/Layout';
-import NotFound from './pages/NotFound/NotFound';
-import Cart from './pages/Cart/Cart';
-import ProductId from './pages/ProductId/ProductId';
+
+const ProductId = React.lazy(
+  () => import(/* webpackChunkName: "ProductId" */ './pages/ProductId/ProductId'),
+);
+const Cart = React.lazy(() => import(/* webpackChunkName: "Cart" */ './pages/Cart/Cart'));
+const NotFound = React.lazy(
+  () => import(/* webpackChunkName: "NotFound" */ './pages/NotFound/NotFound'),
+);
 
 function App() {
   return (
@@ -12,9 +18,30 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path={'product/:id'} element={<ProductId />} />
-          <Route path={'/cart'} element={<Cart />} />
-          <Route path="*" element={<NotFound />} />
+          <Route
+            path={'product/:id'}
+            element={
+              <Suspense fallback={<div className={classes.lazyPreview} />}>
+                <ProductId />
+              </Suspense>
+            }
+          />
+          <Route
+            path={'/cart'}
+            element={
+              <Suspense fallback={<div className={classes.lazyPreview} />}>
+                <Cart />
+              </Suspense>
+            }
+          />
+          <Route
+            path="*"
+            element={
+              <Suspense fallback={<div className={classes.lazyPreview} />}>
+                <NotFound />
+              </Suspense>
+            }
+          />
         </Route>
       </Routes>
     </BrowserRouter>

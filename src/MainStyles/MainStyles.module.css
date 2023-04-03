@@ -74,25 +74,16 @@ h1, h2, h3, h4, h5, h6 {
 
 /*--------------------*/
 body {
-  background: rgb(2, 175, 209);
-  background: linear-gradient(163deg, rgb(2, 175, 209) 0%, rgb(106, 85, 164) 100%);
   font-family: "Exo 2", sans-serif;
+  background: linear-gradient(163deg, rgb(2, 175, 209) 0%, rgb(106, 85, 164) 100%) no-repeat fixed;
 }
 
-.wrapper {
-  width: calc(100vw - 100px);
-  background: #fff;
-  height: 100%;
-  margin: 50px auto;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  border-radius: 10px;
-}
-
-.container {
-  width: 80%;
-  margin: 0 auto;
+.lazyPreview {
+  position: relative;
+  height: 75vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /*# sourceMappingURL=MainStyles.module.css.map */
