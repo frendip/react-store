@@ -10,6 +10,7 @@ import { addProduct } from '../../store/slices/cartSlice';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { useAppSelector } from '../../hooks/useAppSelector';
 import ProductIdSkeleton from '../../components/ProductIdSkeleton/ProductIdSkeleton';
+import { priceCalculation } from '../../utils/priceCalculation';
 
 const ProductId = () => {
   const { id } = useParams();
@@ -48,7 +49,7 @@ const ProductId = () => {
       title: product.title,
       memory: product.memory?.[activeMemory],
       colour: product.colours?.[activeColour],
-      price: product.price,
+      price: priceCalculation(product.price, activeMemory),
       count: 1,
     });
   }, [product, activeColour, activeMemory]);
@@ -89,7 +90,9 @@ const ProductId = () => {
               ))}
             </ul>
             <div className={classes.productId__button}>
-              <div className={classes.productId__price}>От {product.price} ₽</div>
+              <div className={classes.productId__price}>
+                От {priceCalculation(product.price, activeMemory)} ₽
+              </div>
               <AddProductButton
                 size={'medium'}
                 onClick={() => dispatch(addProduct(productForCart))}>

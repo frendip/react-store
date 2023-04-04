@@ -7,6 +7,7 @@ import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { addProduct } from '../../store/slices/cartSlice';
 import ConfigurationSelector from '../ConfigurationSelector/ConfigurationSelector';
 import { useNavigate } from 'react-router-dom';
+import { priceCalculation } from '../../utils/priceCalculation';
 
 const ProductCard: FC<IProduct> = ({ id, image, title, memory, colours, price }) => {
   const [activeMemory, setActiveMemory] = useState<number>(0);
@@ -20,7 +21,7 @@ const ProductCard: FC<IProduct> = ({ id, image, title, memory, colours, price })
     title,
     memory: memory[activeMemory],
     colour: colours[activeColour],
-    price,
+    price: priceCalculation(price, activeMemory),
     count: 1,
   };
 
@@ -51,7 +52,9 @@ const ProductCard: FC<IProduct> = ({ id, image, title, memory, colours, price })
         activeColour={activeColour}
       />
       <div className={classes.productCard__button}>
-        <div className={classes.productCard__price}>От {price} ₽</div>
+        <div className={classes.productCard__price}>
+          От {priceCalculation(price, activeMemory)} ₽
+        </div>
         <AddProductButton onClick={() => dispatch(addProduct(productProps))}>
           {productCount}
         </AddProductButton>
