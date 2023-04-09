@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700&display=swap');
 @import 'nullstyle';
+@import "variables";
 
 body {
   font-family: 'Exo 2', sans-serif;
-  background: linear-gradient(163deg, rgba(2, 175, 209, 1) 0%, rgba(106, 85, 164, 1) 100%) no-repeat
+  background: linear-gradient(163deg, $color-blue 0%, $color-purple 100%) no-repeat
     fixed;
 }
 

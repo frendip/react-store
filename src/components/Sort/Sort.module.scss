@@ -1,3 +1,5 @@
+@import '../../MainStyles/variables';
+
 .sort {
   position: relative;
 
@@ -6,7 +8,7 @@
     cursor: pointer;
 
     span {
-      border-bottom: 2px dashed rgb(2, 175, 209);
+      border-bottom: 2px dashed $color-blue;
     }
   }
 
@@ -16,7 +18,7 @@
     right: 0;
     margin-top: 15px;
     background: #ffffff;
-    box-shadow: 0 0 5px 5px rgba(2, 175, 209, 0.25);
+    box-shadow: 0 0 5px 5px rgba($color-blue, 0.25);
     border-radius: 10px;
     overflow: hidden;
     padding: 10px 0;
@@ -36,16 +38,16 @@
     font-size: 15px;
 
     &:hover {
-      background-color: darken(#f9f9f9, 5%);
+      background-color: darken(white, 5%);
     }
 
     &:active {
-      background-color: darken(#f9f9f9, 7%);
+      background-color: darken(white, 7%);
     }
   }
 
   &__active {
-    background: linear-gradient(163deg, rgba(2, 175, 209, 0.35) 0%, rgba(106, 85, 164, 0.35) 100%);
+    background: linear-gradient(163deg, rgba($color-blue, 0.35) 0%, rgba($color-purple, 0.35) 100%);
   }
 }
 

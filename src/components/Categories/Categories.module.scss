@@ -1,3 +1,5 @@
+@import '../../MainStyles/variables';
+
 .categories {
   &__list {
     display: flex;
@@ -5,7 +7,7 @@
   }
 
   &__active {
-    border: 3px solid rgb(106, 85, 164);
+    border: 3px solid $color-purple;
     font-weight: 700;
   }
 }

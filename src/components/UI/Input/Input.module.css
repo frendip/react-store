@@ -17,10 +17,10 @@
   border-radius: 5px;
 }
 .searchInput__img:hover {
-  background-color: #ececec;
+  background-color: #f2f2f2;
 }
 .searchInput__img:active {
-  background-color: #e0e0e0;
+  background-color: #e6e6e6;
 }
 .searchInput__magnifier {
   left: 15px;
@@ -31,14 +31,14 @@
   top: 10px;
 }
 .searchInput__search {
-  border: solid 2px rgb(2, 175, 209);
+  border: solid 2px #02afd1;
   border-radius: 15px;
   padding-left: 60px;
   width: 100%;
   height: 100%;
 }
 .searchInput__search:focus {
-  border: solid 2.5px rgb(2, 175, 209);
+  border: solid 2.5px #02afd1;
 }
 
 /*# sourceMappingURL=Input.module.css.map */

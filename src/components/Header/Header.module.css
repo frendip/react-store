@@ -18,10 +18,10 @@
   border-radius: 10px;
 }
 .header__img:hover {
-  background-color: #ececec;
+  background-color: #e6e6e6;
 }
 .header__img:active {
-  background-color: #e0e0e0;
+  background-color: #dadada;
 }
 .header__img img {
   position: absolute;

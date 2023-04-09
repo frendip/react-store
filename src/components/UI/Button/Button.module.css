@@ -5,10 +5,10 @@
   transition-duration: 0.2s;
 }
 .baseBtn:hover {
-  background-color: #ececec;
+  background-color: #f2f2f2;
 }
 .baseBtn:active {
-  background-color: #e0e0e0;
+  background-color: #e6e6e6;
 }
 
 .sizeXSmall {
@@ -41,12 +41,12 @@
 
 .addProductBtn {
   border-style: solid;
-  border-color: rgb(106, 85, 164);
+  border-color: #6a55a4;
 }
 .addProductBtn__count {
   display: inline-block;
   border-radius: 30px;
-  background-color: rgb(106, 85, 164);
+  background-color: #6a55a4;
   color: white;
   font-weight: 600;
   width: 22px;
@@ -59,7 +59,7 @@
   left: 3px;
 }
 .addProductBtn:hover {
-  background: rgb(106, 85, 164);
+  background: #6a55a4;
   color: white;
   font-weight: 700;
 }
@@ -69,14 +69,14 @@
 
 .commonBtn__primary {
   border-style: solid;
-  border-color: rgb(2, 175, 209);
+  border-color: #02afd1;
 }
 .commonBtn__secondary {
   border-style: solid;
-  border-color: rgb(106, 85, 164);
+  border-color: #6a55a4;
 }
 .commonBtn__active {
-  border: 3px solid rgb(106, 85, 164);
+  border: 3px solid #6a55a4;
   font-weight: 700;
 }
 

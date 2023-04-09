@@ -1,9 +1,11 @@
+@import '../../MainStyles/variables';
+
 .configurationSelector {
   display: flex;
   flex-direction: column;
   gap: 10px 0;
 
-  background: rgb(243, 243, 243);
+  background: $color-light-grey;
   border-radius: 15px;
 
   padding: 10px;
@@ -22,11 +24,11 @@
     transition: background-color 0.1s ease-in-out;
 
     &:hover {
-      background-color: darken(#f9f9f9, 5%);
+      background-color: darken($color-light-grey, 5%);
     }
 
     &:active {
-      background-color: darken(#f9f9f9, 7%);
+      background-color: darken($color-light-grey, 7%);
     }
   }
 

@@ -75,7 +75,7 @@ h1, h2, h3, h4, h5, h6 {
 /*--------------------*/
 body {
   font-family: "Exo 2", sans-serif;
-  background: linear-gradient(163deg, rgb(2, 175, 209) 0%, rgb(106, 85, 164) 100%) no-repeat fixed;
+  background: linear-gradient(163deg, #02afd1 0%, #6a55a4 100%) no-repeat fixed;
 }
 
 .lazyPreview {
