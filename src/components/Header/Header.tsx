@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 import classes from './Header.module.scss';
 import basketLogo from '../../assets/img/icon-basket.png';
-import iphoneLogo from '../../assets/img/icon-iphone2.png';
 import { Link, useLocation } from 'react-router-dom';
 import { useAppSelector } from '../../hooks/useAppSelector';
 import { SearchInput } from '../UI/Input/Input';
 import { CommonButton } from '../UI/Button/Button';
 import clsx from 'clsx';
+import Logo from '../Logo/Logo';
 
 const Header: FC = () => {
   const { totalCount, totalPrice } = useAppSelector((state) => state.cart);
@@ -14,17 +14,7 @@ const Header: FC = () => {
   return (
     <div className={classes.header}>
       <div className={classes.header__row}>
-        <div className={classes.header__logo}>
-          <Link to={'/'}>
-            <div className={classes.header__img}>
-              <img src={iphoneLogo} alt="phone" />
-            </div>
-          </Link>
-          <div className={classes.header__col}>
-            <h3 className={classes.header__title}>React Store</h3>
-            <h5 className={classes.header__subtitle}>Самые лучшие цены!</h5>
-          </div>
-        </div>
+        <Logo />
         {path === '/' && <SearchInput />}
         <Link to={'/cart'}>
           <CommonButton variant={'primary'} size={'medium'} borderWidth={'medium'}>
