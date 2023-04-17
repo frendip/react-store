@@ -67,6 +67,9 @@
   background-color: #544482;
 }
 
+.commonBtn {
+  background: white;
+}
 .commonBtn__primary {
   border-style: solid;
   border-color: #02afd1;

@@ -7,7 +7,7 @@
 .searchInput {
   position: relative;
   height: 54px;
-  width: 500px;
+  flex: 1;
 }
 .searchInput__img {
   cursor: pointer;
