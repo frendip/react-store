@@ -12,6 +12,29 @@
   align-items: center;
   gap: 0 15px;
 }
+.mobileHeader__col {
+  display: flex;
+  gap: 0 25px;
+  align-items: center;
+}
+.mobileHeader__magnifier {
+  position: relative;
+  height: 32px;
+  width: 32px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.mobileHeader__magnifier img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  object-fit: cover;
+}
+.mobileHeader__magnifier:active {
+  background-color: #dadada;
+}
 .mobileHeader__logo {
   z-index: 3;
 }

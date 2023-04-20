@@ -1,0 +1,35 @@
+.basketButton {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.basketButton__price {
+  color: black;
+  font-size: 16px;
+  padding-right: 10px;
+}
+.basketButton__row {
+  display: flex;
+  align-items: center;
+  gap: 0 5px;
+  border-left: black 1px solid;
+  padding-left: 10px;
+}
+.basketButton__img {
+  position: relative;
+  width: 30px;
+  height: 30px;
+}
+.basketButton__img img {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+}
+.basketButton__count {
+  color: black;
+  font-size: 16px;
+}
+
+/*# sourceMappingURL=BasketButton.module.css.map */

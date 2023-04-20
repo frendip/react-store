@@ -3,7 +3,7 @@
 .searchPopup {
   display: flex;
   justify-content: center;
-  align-items: start;
+  align-items: flex-start;
 
   z-index: 3;
   position: fixed;
@@ -16,10 +16,22 @@
 
   padding-top: 250px;
 
+  animation-name: popup;
+  animation-duration: 0.3s;
+
   &__content {
     flex-basis: 50%;
     background-color: #fff;
     border-radius: 15px;
     position: relative;
+  }
+}
+
+@keyframes popup {
+  from {
+    top: -100%;
+  }
+  to {
+    top: 0;
   }
 }

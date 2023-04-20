@@ -8,38 +8,5 @@
   align-items: center;
   gap: 0 150px;
 }
-.basket {
-  display: flex;
-  align-items: center;
-  position: relative;
-}
-.basket__price {
-  color: black;
-  font-size: 16px;
-  padding-right: 10px;
-}
-.basket__row {
-  display: flex;
-  align-items: center;
-  gap: 0 5px;
-  border-left: black 1px solid;
-  padding-left: 10px;
-}
-.basket__img {
-  position: relative;
-  width: 30px;
-  height: 30px;
-}
-.basket__img img {
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  object-fit: cover;
-}
-.basket__count {
-  color: black;
-  font-size: 16px;
-}
 
 /*# sourceMappingURL=Header.module.css.map */
