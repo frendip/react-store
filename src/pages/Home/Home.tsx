@@ -15,6 +15,7 @@ import qs from 'qs';
 import { useNavigate } from 'react-router-dom';
 import { setFiltersFromUrl } from '../../store/slices/filterSlice';
 import { fetchProducts } from '../../store/slices/productsSlice';
+import { useMediaQuery } from 'react-responsive';
 
 const Home = () => {
   const { products, status } = useAppSelector((state) => state.products);
@@ -89,7 +90,7 @@ const Home = () => {
   return (
     <>
       <div className={classes.top}>
-        <Categories />
+        {useMediaQuery({ query: '(min-width: 1201px)' }) && <Categories />}
         <Sort />
       </div>
       <div className={classes.title}>Все товары</div>
