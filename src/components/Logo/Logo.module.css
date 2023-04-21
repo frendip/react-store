@@ -1,5 +1,6 @@
 .logo {
   display: flex;
+  align-items: center;
   gap: 15px;
 }
 .logo__img {
@@ -35,6 +36,37 @@
 .logo__subtitle {
   color: rgba(0, 0, 0, 0.5);
   font-size: 20px;
+}
+
+@media (max-width: 700px) {
+  .logo__img {
+    width: 35px;
+    height: 61px;
+  }
+  .logo__title {
+    font-size: 22px;
+  }
+  .logo__subtitle {
+    font-size: 14px;
+  }
+}
+@media (max-width: 450px) {
+  .logo {
+    gap: 5px;
+  }
+  .logo__img {
+    width: 30px;
+    height: 52px;
+  }
+  .logo__col {
+    gap: 10px 0;
+  }
+  .logo__title {
+    font-size: 18px;
+  }
+  .logo__subtitle {
+    font-size: 12px;
+  }
 }
 
 /*# sourceMappingURL=Logo.module.css.map */

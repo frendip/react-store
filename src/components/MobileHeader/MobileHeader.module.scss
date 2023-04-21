@@ -47,3 +47,11 @@
     z-index: 3;
   }
 }
+
+@include mobile {
+  .mobileHeader {
+    &__col {
+      gap: 0 15px;
+    }
+  }
+}

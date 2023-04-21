@@ -1,7 +1,34 @@
+@import '../../../MainStyles/variables';
+
+.sizeSmall {
+  padding: 10px 10px;
+}
+
+.sizeMedium {
+  padding: 10px 30px;
+}
+
 .basketButton {
   display: flex;
   align-items: center;
   position: relative;
+
+  background: transparent;
+  border-radius: 15px;
+
+  transition-duration: 0.2s;
+
+  border-width: 2px;
+  border-style: solid;
+  border-color: $color-blue;
+
+  &:hover {
+    background-color: darken(white, 5%);
+  }
+
+  &:active {
+    background-color: darken(white, 10%);
+  }
 
   &__price {
     color: black;
@@ -36,5 +63,25 @@
   &__count {
     color: black;
     font-size: 16px;
+  }
+}
+
+@include mobile {
+  .basketButton {
+    &__price {
+      font-size: 13px;
+      padding-right: 5px;
+      white-space: nowrap;
+    }
+
+    &__img {
+      width: 20px;
+      height: 20px;
+    }
+
+    &__count {
+      color: black;
+      font-size: 13px;
+    }
   }
 }

@@ -39,4 +39,10 @@
   z-index: 3;
 }
 
+@media (max-width: 450px) {
+  .mobileHeader__col {
+    gap: 0 15px;
+  }
+}
+
 /*# sourceMappingURL=MobileHeader.module.css.map */

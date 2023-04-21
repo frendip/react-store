@@ -5,7 +5,7 @@ $color-light-grey: #f3f3f3ff;
 $breakpoint-xxl: 1200px;
 $breakpoint-xl: 900px;
 $breakpoint-md: 700px;
-$breakpoint-sm: 350px;
+$breakpoint-sm: 450px;
 
 @mixin desktop() {
   @media (max-width: $breakpoint-xxl) {

@@ -31,7 +31,7 @@ const MobileHeader = () => {
         )}
         <Logo className={classes.mobileHeader__logo} />
         <Link to={'/cart'}>
-          <BasketButton />
+          <BasketButton size={'small'} />
         </Link>
       </div>
     </div>

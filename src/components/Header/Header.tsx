@@ -13,7 +13,7 @@ const Header: FC = () => {
         <Logo />
         {path === '/' && <SearchInput />}
         <Link to={'/cart'}>
-          <BasketButton />
+          <BasketButton size={'medium'} />
         </Link>
       </div>
     </div>

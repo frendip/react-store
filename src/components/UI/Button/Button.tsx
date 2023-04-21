@@ -53,7 +53,7 @@ export const AddProductButton: FC<AddProductButtonProps> = ({
 interface CommonButtonProps extends BaseButtonProps {
   active?: boolean;
   variant?: 'primary' | 'secondary';
-  size?: 'small' | 'medium' | 'large';
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
   borderWidth?: 'thin' | 'medium' | 'thick';
 }
 
