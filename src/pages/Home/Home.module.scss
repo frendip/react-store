@@ -35,7 +35,7 @@
 
 .items {
   display: flex;
-  justify-content: left;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 50px;
   padding-bottom: 30px;
@@ -43,6 +43,15 @@
 
 @include desktop {
   .top {
-    justify-content: flex-end;
+    justify-content: center;
+  }
+  .title {
+    text-align: center;
+  }
+}
+
+@include tablet {
+  .title {
+    font-size: 26px;
   }
 }
