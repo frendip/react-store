@@ -70,7 +70,7 @@ const Cart = () => {
           borderWidth={'medium'}>
           Вернуться назад
         </CommonButton>
-        <CommonButton variant={'secondary'} size={'medium'} borderWidth={'medium'}>
+        <CommonButton variant={'secondary'} size={'small'} borderWidth={'medium'}>
           Оплатить сейчас
         </CommonButton>
       </div>

@@ -95,3 +95,73 @@
   display: flex;
   justify-content: space-between;
 }
+
+@include desktop {
+  .cartContainer {
+    padding-top: 20px;
+    width: 85%;
+  }
+}
+
+@include tablet {
+  .cartContainer {
+    width: 90%;
+  }
+
+  .top {
+    gap: 0 30px;
+  }
+
+  .title {
+    &__text {
+      font-size: 26px;
+    }
+  }
+
+  .clearCartBtn {
+    &__text {
+      font-size: 12px;
+    }
+  }
+
+  .buttons {
+    gap: 0 40px;
+  }
+}
+
+@include mobile {
+  .title {
+    &__img {
+      width: 32px;
+      height: 32px;
+    }
+
+    &__text {
+      font-size: 22px;
+    }
+  }
+
+  .clearCartBtn {
+    &__img {
+      width: 32px;
+      height: 32px;
+    }
+
+    &__text {
+      font-size: 10px;
+      font-weight: 500;
+    }
+  }
+
+  .paymentInfo {
+    gap: 0 20px;
+
+    &__productCount {
+      font-size: 12px;
+    }
+
+    &__orderAmount {
+      font-size: 12px;
+    }
+  }
+}

@@ -97,4 +97,11 @@
   object-fit: cover;
 }
 
+@media (max-width: 450px) {
+  .cartItemBtn {
+    width: 25px;
+    height: 25px;
+  }
+}
+
 /*# sourceMappingURL=Button.module.css.map */

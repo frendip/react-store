@@ -17,6 +17,12 @@
   padding: 30px 0;
 }
 
+@include tablet {
+  .wrapper {
+    width: calc(100vw - 40px);
+  }
+}
+
 @include mobile {
   .wrapper {
     width: calc(100vw - 20px);
