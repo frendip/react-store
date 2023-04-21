@@ -59,3 +59,19 @@
     opacity: 1;
   }
 }
+
+@include tablet {
+  .sort {
+    &__text {
+      font-size: 15px;
+    }
+  }
+}
+
+@include mobile {
+  .sort {
+    &__text {
+      font-size: 14px;
+    }
+  }
+}

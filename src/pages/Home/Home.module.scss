@@ -1,3 +1,5 @@
+@import '../../MainStyles/variables';
+
 .top {
   display: flex;
   justify-content: space-between;
@@ -13,6 +15,7 @@
 
 .error {
   padding: 100px 0;
+
   &__title {
     padding-bottom: 30px;
     text-align: center;
@@ -36,4 +39,10 @@
   flex-wrap: wrap;
   gap: 50px;
   padding-bottom: 30px;
+}
+
+@include desktop {
+  .top {
+    justify-content: flex-end;
+  }
 }

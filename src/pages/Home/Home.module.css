@@ -36,4 +36,10 @@
   padding-bottom: 30px;
 }
 
+@media (max-width: 1200px) {
+  .top {
+    justify-content: flex-end;
+  }
+}
+
 /*# sourceMappingURL=Home.module.css.map */
