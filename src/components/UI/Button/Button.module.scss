@@ -2,6 +2,7 @@
 
 .baseBtn {
   background: transparent;
+  color: black;
   border-radius: 15px;
   font-size: 18px;
   transition-duration: 0.2s;
@@ -112,5 +113,31 @@
   .cartItemBtn {
     width: 25px;
     height: 25px;
+  }
+}
+
+@include tablet {
+  .baseBtn {
+    &:hover {
+      background: none !important;
+    }
+
+    &:focus {
+      background-color: darken(white, 5%);
+    }
+  }
+
+  .addProductBtn {
+    &:hover {
+      background: none !important;
+      color: black;
+      font-weight: 400;
+    }
+
+    &:focus {
+      background: $color-purple;
+      color: white;
+      font-weight: 700;
+    }
   }
 }

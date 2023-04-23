@@ -1,5 +1,6 @@
 .baseBtn {
   background: transparent;
+  color: black;
   border-radius: 15px;
   font-size: 18px;
   transition-duration: 0.2s;
@@ -101,6 +102,24 @@
   .cartItemBtn {
     width: 25px;
     height: 25px;
+  }
+}
+@media (max-width: 700px) {
+  .baseBtn:hover {
+    background: none !important;
+  }
+  .baseBtn:focus {
+    background-color: #f2f2f2;
+  }
+  .addProductBtn:hover {
+    background: none !important;
+    color: black;
+    font-weight: 400;
+  }
+  .addProductBtn:focus {
+    background: #6a55a4;
+    color: white;
+    font-weight: 700;
   }
 }
 

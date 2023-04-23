@@ -52,6 +52,14 @@
     &__img {
       width: 35px;
       height: 61px;
+
+      &:hover {
+        background: none !important;
+      }
+
+      &:focus {
+        background-color: darken($color-light-grey, 5%);
+      }
     }
 
     &__title {

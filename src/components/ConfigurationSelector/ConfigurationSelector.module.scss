@@ -37,3 +37,17 @@
     box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2);
   }
 }
+
+@include tablet {
+  .configurationSelector {
+    &__item {
+      &:hover {
+        background: white;
+      }
+
+      &:focus {
+        background-color: darken($color-light-grey, 5%);
+      }
+    }
+  }
+}

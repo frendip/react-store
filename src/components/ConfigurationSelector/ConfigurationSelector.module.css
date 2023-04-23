@@ -29,4 +29,13 @@
   box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
+@media (max-width: 700px) {
+  .configurationSelector__item:hover {
+    background: white;
+  }
+  .configurationSelector__item:focus {
+    background-color: #e6e6e6;
+  }
+}
+
 /*# sourceMappingURL=ConfigurationSelector.module.css.map */

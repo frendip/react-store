@@ -43,6 +43,12 @@
     width: 35px;
     height: 61px;
   }
+  .logo__img:hover {
+    background: none !important;
+  }
+  .logo__img:focus {
+    background-color: #e6e6e6;
+  }
   .logo__title {
     font-size: 22px;
   }

@@ -67,6 +67,18 @@
   }
 }
 
+@include tablet {
+  .basketButton {
+    &:hover {
+      background: none !important;
+    }
+
+    &:focus {
+      background-color: darken(white, 5%);
+    }
+  }
+}
+
 @include mobile {
   .basketButton {
     &__price {
