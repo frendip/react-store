@@ -10,6 +10,7 @@ import { addProduct } from '../../store/slices/cartSlice';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { useAppSelector } from '../../hooks/useAppSelector';
 import ProductIdSkeleton from '../../components/ProductIdSkeleton/ProductIdSkeleton';
+import { RotatingLines } from 'react-loader-spinner';
 import { priceCalculation } from '../../utils/priceCalculation';
 import { useMediaQuery } from 'react-responsive';
 
@@ -70,7 +71,19 @@ const ProductId = () => {
           </div>
         </div>
       ) : isLoading ? (
-        <ProductIdSkeleton />
+        isDesktopSize.current ? (
+          <div className={classes.loader}>
+            <RotatingLines
+              strokeColor="grey"
+              strokeWidth="5"
+              animationDuration="0.75"
+              width="72"
+              visible={true}
+            />
+          </div>
+        ) : (
+          <ProductIdSkeleton />
+        )
       ) : (
         <>
           <div className={classes.productId}>
