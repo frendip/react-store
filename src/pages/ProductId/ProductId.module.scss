@@ -1,3 +1,5 @@
+@import '../../MainStyles/variables';
+
 .productIdContainer {
   width: 80%;
   margin: 0 auto;
@@ -5,6 +7,7 @@
 
 .error {
   padding: 100px 0;
+
   &__title {
     padding-bottom: 30px;
     text-align: center;
@@ -66,6 +69,8 @@
     display: flex;
     flex-direction: column;
     gap: 5px 0;
+
+    padding-bottom: 20px;
   }
 
   &__characteristicItem {
@@ -81,6 +86,7 @@
   }
 
   &__price {
+    white-space: nowrap;
     font-size: 25px;
     font-weight: 600;
   }
@@ -90,4 +96,76 @@
   padding-top: 30px;
   display: flex;
   justify-content: center;
+}
+
+@include desktop {
+  .productId {
+    gap: 0 30px;
+
+    &__col1 {
+      padding-bottom: 30px;
+      margin: 0 auto;
+    }
+
+    &__img {
+      max-height: 350px;
+      margin-bottom: 15px;
+    }
+
+    &__title {
+      font-size: 38px;
+    }
+
+    &__characteristicItem {
+      font-size: 16px;
+    }
+  }
+}
+
+@include laptop {
+  .productId {
+    flex-direction: column;
+
+    &__title {
+      text-align: center;
+    }
+
+    &__characteristicItem {
+      text-align: center;
+    }
+  }
+}
+
+@include tablet {
+  .productId {
+    &__title {
+      font-size: 36px;
+    }
+
+    &__characteristicItem {
+      font-size: 14px;
+    }
+
+    &__button {
+      flex-direction: column;
+      gap: 20px 0;
+    }
+  }
+
+  .backButton {
+    padding-top: 60px;
+  }
+}
+
+@include mobile {
+  .productId {
+    &__img {
+      width: 260px;
+      height: 260px;
+    }
+
+    &__price {
+      font-size: 22px;
+    }
+  }
 }

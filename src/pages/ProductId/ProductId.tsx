@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { IProduct, IProductCart } from '../../components/types/types';
 import { useFetching } from '../../hooks/useFetching';
@@ -11,11 +11,14 @@ import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { useAppSelector } from '../../hooks/useAppSelector';
 import ProductIdSkeleton from '../../components/ProductIdSkeleton/ProductIdSkeleton';
 import { priceCalculation } from '../../utils/priceCalculation';
+import { useMediaQuery } from 'react-responsive';
 
 const ProductId = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
+  const isDesktopSize = useRef<boolean>(false);
+  const isLaptopSize = useRef<boolean>(false);
   const [product, setProduct] = useState<IProduct>({} as IProduct);
   const [productForCart, setProductForCart] = useState<IProductCart>({} as IProductCart);
   const [activeMemory, setActiveMemory] = useState<number>(0);
@@ -54,6 +57,9 @@ const ProductId = () => {
     });
   }, [product, activeColour, activeMemory]);
 
+  isDesktopSize.current = useMediaQuery({ query: '(max-width: 1200px)' });
+  isLaptopSize.current = useMediaQuery({ query: '(max-width: 900px)' });
+
   return (
     <div className={classes.productIdContainer}>
       {error ? (
@@ -66,29 +72,50 @@ const ProductId = () => {
       ) : isLoading ? (
         <ProductIdSkeleton />
       ) : (
-        <div className={classes.productId}>
-          <div className={classes.productId__col1}>
-            <div className={classes.productId__img}>
-              <img src={require(`../../assets/img/${product.image}HQ.png`)} alt={product.title} />
+        <>
+          <div className={classes.productId}>
+            {isLaptopSize.current && (
+              <div className={classes.productId__title}>{product.title}</div>
+            )}
+            <div className={classes.productId__col1}>
+              <div className={classes.productId__img}>
+                <img src={require(`../../assets/img/${product.image}HQ.png`)} alt={product.title} />
+              </div>
+              <ConfigurationSelector
+                memory={product.memory}
+                setActiveMemory={setActiveMemory}
+                activeMemory={activeMemory}
+                colours={product.colours}
+                setActiveColour={setActiveColour}
+                activeColour={activeColour}
+              />
             </div>
-            <ConfigurationSelector
-              memory={product.memory}
-              setActiveMemory={setActiveMemory}
-              activeMemory={activeMemory}
-              colours={product.colours}
-              setActiveColour={setActiveColour}
-              activeColour={activeColour}
-            />
+            <div className={classes.productId__col2}>
+              {!isLaptopSize.current && (
+                <div className={classes.productId__title}>{product.title}</div>
+              )}
+              <ul className={classes.productId__characteristicsList}>
+                {product.descriptionCharacteristics.map((characteristic, index) => (
+                  <li key={index} className={classes.productId__characteristicItem}>
+                    {characteristic}
+                  </li>
+                ))}
+              </ul>
+              {!isDesktopSize.current && (
+                <div className={classes.productId__button}>
+                  <div className={classes.productId__price}>
+                    От {priceCalculation(product.price, activeMemory)} ₽
+                  </div>
+                  <AddProductButton
+                    size={'medium'}
+                    onClick={() => dispatch(addProduct(productForCart))}>
+                    {productCount}
+                  </AddProductButton>
+                </div>
+              )}
+            </div>
           </div>
-          <div className={classes.productId__col2}>
-            <div className={classes.productId__title}>{product.title}</div>
-            <ul className={classes.productId__characteristicsList}>
-              {product.descriptionCharacteristics.map((characteristic, index) => (
-                <li key={index} className={classes.productId__characteristicItem}>
-                  {characteristic}
-                </li>
-              ))}
-            </ul>
+          {isDesktopSize.current && (
             <div className={classes.productId__button}>
               <div className={classes.productId__price}>
                 От {priceCalculation(product.price, activeMemory)} ₽
@@ -99,8 +126,8 @@ const ProductId = () => {
                 {productCount}
               </AddProductButton>
             </div>
-          </div>
-        </div>
+          )}
+        </>
       )}
       <div className={classes.backButton}>
         <CommonButton

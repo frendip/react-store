@@ -124,6 +124,18 @@
     }
   }
 
+  .paymentInfo {
+    gap: 0 20px;
+
+    &__productCount {
+      font-size: 14px;
+    }
+
+    &__orderAmount {
+      font-size: 14px;
+    }
+  }
+
   .buttons {
     gap: 0 40px;
   }
@@ -154,8 +166,6 @@
   }
 
   .paymentInfo {
-    gap: 0 20px;
-
     &__productCount {
       font-size: 12px;
     }

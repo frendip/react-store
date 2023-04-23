@@ -26,6 +26,7 @@
 .basketButton__price {
   color: black;
   font-size: 16px;
+  white-space: nowrap;
   padding-right: 10px;
 }
 .basketButton__row {
@@ -56,7 +57,6 @@
   .basketButton__price {
     font-size: 13px;
     padding-right: 5px;
-    white-space: nowrap;
   }
   .basketButton__img {
     width: 20px;
