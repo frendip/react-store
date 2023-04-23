@@ -35,14 +35,12 @@ const Cart = () => {
           </div>
           <h1 className={classes.title__text}>Корзина</h1>
         </div>
-        <BaseButton>
+        <BaseButton onClick={clearCartClick}>
           <div className={classes.clearCartBtn}>
             <div className={classes.clearCartBtn__img}>
               <img src={iconTrash} alt="icon-trash" />
             </div>
-            <div onClick={clearCartClick} className={classes.clearCartBtn__text}>
-              Очистить корзину
-            </div>
+            <div className={classes.clearCartBtn__text}>Очистить корзину</div>
           </div>
         </BaseButton>
       </div>
