@@ -118,8 +118,8 @@
   }
   .addProductBtn:focus {
     background: #6a55a4;
-    color: white;
-    font-weight: 700;
+    color: black;
+    font-weight: 400;
   }
 }
 
